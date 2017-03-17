@@ -71,7 +71,7 @@ router.post("/", function(req, res) {
                     secretObject.save(function(err, secrets) {
                         if (err) {
                             console.log('Error COMPLETING secrecyLevel query task', err);
-                            res.sendStatus(500);
+                            res.status(500).send('not authorized motha  fu§•¡™£¢a');
                         } else {
                             // return all of the results where a specific user has permission
                             res.sendStatus(201);

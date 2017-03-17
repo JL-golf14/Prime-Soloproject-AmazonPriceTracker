@@ -8,6 +8,7 @@ app.controller("SampleCtrl", function($firebaseAuth, $http) {
   self.logIn = function(){
     auth.$signInWithPopup("google").then(function(firebaseUser) {
       console.log("Firebase Authenticated as: ", firebaseUser.user.displayName);
+            console.log("Firebase Authenticated clearanceLevel: ", firebaseUser.user.clearanceLevel);
     }).catch(function(error) {
       console.log("Authentication failed: ", error);
     });
@@ -44,7 +45,7 @@ app.controller("SampleCtrl", function($firebaseAuth, $http) {
   self.addSecret = function(){
     console.log("client side",self.newSecret);
     auth.$onAuthStateChanged(function(firebaseUser){
-
+          console.log( "client fire user",firebaseUser);
       // firebaseUser will be null if not logged in
       if(firebaseUser) {
         // This is where we make our call to our server
@@ -58,7 +59,7 @@ app.controller("SampleCtrl", function($firebaseAuth, $http) {
             },
             data:self.newSecret
           }).then(function(response){
-            self.secretData = response.data;
+
             getSecrets();
           });
         });
@@ -71,14 +72,6 @@ app.controller("SampleCtrl", function($firebaseAuth, $http) {
 
     });
   }
-
-
-
-
-
-
-
-
 
 
   // This code runs when the user logs out
