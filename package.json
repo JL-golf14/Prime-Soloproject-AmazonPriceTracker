@@ -7,12 +7,16 @@
     "start": "node server/app.js",
     "test": "nodemon server/app.js"
   },
-  "author": "Luke Schlangen",
+  "author": "Jeremy Leif",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "firebase-admin": "^4.0.3",
-    "mongoose": "^4.7.0"
+    "amazon-product-api": "^0.4.3",
+      "angular": "1.5.8",
+        "angular-route": "1.5.8",
+          "bootstrap": "^3.3.7",
+            "express": "^4.14.0",
+            "body-parser": "^1.15.2",
+              "firebase-admin": "^4.0.3",
+              "mongoose": "^4.7.0"
   }
 }

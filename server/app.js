@@ -5,7 +5,8 @@ var bodyParser = require('body-parser');
 var decoder = require('./modules/decoder');
 var mongoConnection = require('./modules/mongo-connection');
 var privateData = require('./routes/private-data');
-
+var amazonData = require('./routes/amazon-tracker-data');
+var amazon = require('amazon-product-api');
 var portDecision = process.env.PORT || 5000;
 
 app.get('/', function(req, res){
@@ -23,7 +24,18 @@ app.use(decoder.token);
 /* Whatever you do below this is protected by your authentication. */
 
 // This is the route for your secretData. The request gets here after it has been authenticated.
-app.use("/privateData", privateData);
+
+// ---------------------------------- ------------------- ------------------- -------------------
+//
+app.use("/amazonData", amazonData);
+//
+
+
+
+
+// ------------------- ------------------- ------------------- ------------------- -------------------
+ app.use("/privateData", privateData);
+  // this line needs to be in to use
 
 app.listen(portDecision, function(){
   console.log("Listening on port: ", portDecision);

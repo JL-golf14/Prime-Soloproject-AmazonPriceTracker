@@ -23,7 +23,7 @@
   <button ng-click="sc.logIn()">Log In</button>
   <button ng-click="sc.logOut()">Log Out</button>
   <div ng-if="sc.secretData.length === 0">Log in to get some secret data.</div>
-  <table>
+  <!-- <table>
 
     <tr>
       <th>Add Secret</th><th>Secret Level</th>
@@ -70,6 +70,33 @@
         </td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
+  <h1>AMAZON ASIN.   {{sc.amazonData.data.ASIN["0"]}}</h1>
+<h1>Price    {{sc.amazonData.data.ItemAttributes["0"].ListPrice["0"].FormattedPrice["0"]}}</h1>
+
+
+
+<img src='{{sc.amazonData.data.ImageSets["0"].ImageSet["1"].MediumImage["0"].URL["0"]}}' alt="">
+
+<img src='{{sc.amazonData.data.ImageSets["0"].ImageSet["0"].MediumImage["0"].URL["0"]}}' alt="">
+
+
+
+
+
+
+
+
+
+
+<h2>next item</h2>
+<br>
+<br>
+<h1>AMAZON ASIN.   {{sc.amazonData.data.ASIN["1"]}}</h1>
+<h1>Price    {{sc.amazonData.data.ItemAttributes["1"].ListPrice["0"].FormattedPrice["0"]}}</h1>
+
+
+
+<img src='{{sc.amazonData.data.ImageSets["0"].ImageSet["1"].MediumImage["0"].URL["0"]}}' alt="">
 </body>
 </html>
