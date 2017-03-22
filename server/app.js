@@ -6,6 +6,7 @@ var decoder = require('./modules/decoder');
 var mongoConnection = require('./modules/mongo-connection');
 var privateData = require('./routes/private-data');
 var amazonData = require('./routes/amazon-tracker-data');
+var databaseData = require('./routes/database-data');
 var amazon = require('amazon-product-api');
 var portDecision = process.env.PORT || 5000;
 
@@ -27,11 +28,12 @@ app.use(decoder.token);
 
 // ---------------------------------- ------------------- ------------------- -------------------
 //
+
 app.use("/amazonData", amazonData);
 //
 
 
-
+app.use("/databaseData", databaseData);
 
 // ------------------- ------------------- ------------------- ------------------- -------------------
  app.use("/privateData", privateData);

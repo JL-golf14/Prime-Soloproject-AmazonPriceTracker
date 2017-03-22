@@ -2,6 +2,7 @@ var app = angular.module("sampleApp", ["firebase"]);
 app.controller("SampleCtrl",["$firebaseAuth","$http", function($firebaseAuth, $http) {
   var auth = $firebaseAuth();
   var self = this;
+  self.amazonProperty = {};
   self.newSecret = {};
   self.results =[];
   self.amazonData=[];
@@ -98,6 +99,42 @@ function getAmazon(){
 
 
 
+ self.addSearch = function(){
+  console.log("AMAZON ADD CLicked ");
+  // This code runs whenever the user changes authentication states
+  // e.g. whevenever the user logs in or logs out
+  // this is where we put most of our logic so that we don't duplicate
+  // the same things in the login and the logout code
+
+
+
+
+  auth.$onAuthStateChanged(function(firebaseUser){
+    // firebaseUser will be null if not logged in
+    console.log(self.amazonSearch);
+    if(firebaseUser) {
+      // This is where we make our call to our server
+      firebaseUser.getToken().then(function(idToken){
+        $http({
+          method: 'POST',
+          url: '/amazonData',
+          headers: {
+            id_token: idToken
+          },
+
+          data:self.amazonProperty
+        }).then(function(response){
+          console.log("amazon response Data ....................",response);
+          self.amazonData = response;
+        });
+      });
+    } else {
+      console.log('Not logged in or not authorized. amazon side request');
+      self.results = [];
+    }
+
+  });
+};
 
 
 
@@ -115,12 +152,12 @@ function getAmazon(){
           $http({
             method: 'POST',
             url: '/privateData'
-            // ,
-            // headers: {
-            //   id_token: idToken
+            ,
+            headers: {
+              id_token: idToken
 
-            // },
-            // data:self.newSecret
+            },
+            data:self.newSecret
           }).then(function(response){
 
             getSecrets();
