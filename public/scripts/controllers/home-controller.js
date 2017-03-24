@@ -1,5 +1,5 @@
 
-myApp.controller("SampleCtrl",["$firebaseAuth","$http", function($firebaseAuth, $http) {
+myApp.controller("SampleCtrl",["$firebaseAuth","$http","$location", function($firebaseAuth, $http,$location) {
   var auth = $firebaseAuth();
   var self = this;
   self.amazonProperty = {};

@@ -1,126 +1,49 @@
 <!DOCTYPE html>
-<html ng-app="sampleApp">
+<html ng-app="myApp">
 <head>
 <meta charset="utf-8">
 <title>AMAZON PRICE TRACKER</title>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
-<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
-<script src="scripts/config.js"></script>
 <link rel="stylesheet" href="/vendors/bootstrap.min.css">
 <link rel="stylesheet" href="/css/master.css">
-<!-- Angular Application with Authentication -->
-<script src="scripts/client.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script> -->
+
+<script src="vendors/angular.min.js" charset="utf-8"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+<script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
+<script src="vendors/angular-route.min.js" charset="utf-8"></script>
+
+<!-- <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script> -->
+<script type="text/javascript" src="/scripts/remote.js"></script>
+<script type="text/javascript" src="/scripts/client.js"></script>
+
+<script type="text/javascript" src="scripts/config.js"></script>
+
+<script type="text/javascript" src="/scripts/controllers/home-controller.js"></script>
+<script type="text/javascript" src="/scripts/controllers/charts-controller.js"></script>
+<script type="text/javascript" src="/scripts/controllers/tracker-controller.js"></script>
+
+
+
 </head>
-<body ng-controller="SampleCtrl as sc">
-<h1>LOOKUP SOME AMAZON!!!</h1>
+
+<div class="container">
+
+ <body ng-controller="SampleCtrl as sc">
+<div class="jumbotron"><h1>Amazon Search</h1></div>
 <button ng-click="sc.logIn()">Log In</button>
 <button ng-click="sc.logOut()">Log Out</button>
-<div ng-if="sc.secretData.length === 0">Log in to get some secret data.</div>
-<div class="content_container">
-
-
-
-
-
-
-
-
-
-
-
-<input ng-model="sc.amazonProperty.amazonSearch" placeholder="what to look for?">
-<button ng-click="sc.addSearch()">Look in Amazon</button>
-<!-- <table>
-
-
-</div>
-  <tr>
-    <th>Add Secret</th><th>Secret Level</th>
-  </tr>
-  <tr>
-
-
-    <input ng-model="sc.newSecret.secretText" placeholder="enter new secret">
-    <select ng-model="sc.newSecret.secrecyLevel" placeholder="enter secrecy level">
-      <option >1</option>
-      <option >2</option>
-      <option >3</option>
-      <option >4</option>
-      <option >5</option>
-      <option >6</option>
-      <option >7</option>
-      <option >8</option>
-      <option >9</option>
-      <option >10</option>
-
-    </select>
-    <button ng-click="sc.addSecret()">Add Secret</button>
-  </tr>
-</table> -->
-
-<table class="table">
-<!-- ng-if="sc.secretData.length > 0"  - from table tag -->
-  <!-- <thead>
-    <tr>
-      <th>
-      TITLE
-      </th>
-      <th>
-        ASIN
-      </th>
-
-      <th>
-        PRICE
-    </th>
-    <th>PHOTOS</th>
-    </tr>
-  </thead> -->
-  <tbody>
-    <tr>
-      <td class="deal_top_inner jeremy-custom" ng-repeat="secret in sc.amazonData.data">
-        {{secret.ItemAttributes["0"].Title["0"]}}<p>     </p>
-      <!-- </td>
-
-      <td> -->
-        {{secret.ASIN["0"]}} <p>   </p>
-      <!-- </td>
-      <td> -->
-        {{secret.ItemAttributes["0"].ListPrice["0"].FormattedPrice["0"]}}<p>   </p>
-      <!-- </td>
-      <td> -->
-      <img ng-src='{{secret.ImageSets["0"].ImageSet["1"].MediumImage["0"].URL["0"]}}' alt="">
-    </td>
-    </tr>
-  </tbody>
-</table>
-<!-- <h1>AMAZON ASIN.   {{sc.amazonData.data.ASIN["0"]}}</h1>
-<h1>Price    {{sc.amazonData.data["0"].ItemAttributes["0"].ListPrice["0"].FormattedPrice["0"]}}</h1>
-
-
-
-<img ng-src='{{sc.amazonData.data["0"].ImageSets["0"].ImageSet["1"].MediumImage["0"].URL["0"]}}' alt="">
-
-<img ng-src='{{sc.amazonData.data["0"].ImageSets["0"].ImageSet["0"].MediumImage["0"].URL["0"]}}' alt=""> -->
-
-
-
-
-</div>
-<!--  div container for table
-
-
-
-
-
-<!<h2>next item</h2>
+<br>
+<header ng-include="'/views/nav.html'"></header>
 <br>
 <br>
-<h1>AMAZON ASIN.   {{sc.amazonData.data.ASIN["1"]}}</h1>
-<h1>Price    {{sc.amazonData.data.ItemAttributes["1"].ListPrice["0"].FormattedPrice["0"]}}</h1>
+<div ng-if="sc.amazonData.length === 0">Log int to be able to save tracked items.</div>
+<main ng-view ></main>
 
-.data["0"].MediumImage["0"].URL["0"] -->
 
-<img src='{{sc.amazonData.data.ImageSets["0"].ImageSet["1"].MediumImage["0"].URL["0"]}}' alt="">
-</body>
+
+
+
+
+
+
 </html>

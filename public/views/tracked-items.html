@@ -1,0 +1,26 @@
+<h1> MY TRACKED ITEMS </h1>
+
+<div class="container">
+
+
+<table class="table">
+<th>
+            Title
+                    Price    Asin</th>
+
+<tbody>
+      <tr ng-repeat="stuff in tc.myDBStuff">
+        <td>
+           {{stuff.ItemTitle}}
+        </td>
+        <td>
+          {{stuff.Price}}
+        </td>
+        <td>
+
+          {{stuff.Asin}}
+        </td>
+      </tr>
+    </tbody>
+</table>
+</div>

@@ -10,6 +10,13 @@ var databaseData = require('./routes/database-data');
 var amazon = require('amazon-product-api');
 var portDecision = process.env.PORT || 5000;
 
+
+var cron = require('cron');
+
+var job = new cron.CronJob('* 59 * * *', function() {
+    console.log('Function executed!');
+}, null, true);
+
 app.get('/', function(req, res){
   res.sendFile(path.resolve('./public/views/index.html'));
 });
@@ -28,10 +35,11 @@ app.use(decoder.token);
 
 // ---------------------------------- ------------------- ------------------- -------------------
 //
-
+ app.use("/privateData", privateData);
 app.use("/amazonData", amazonData);
 //
 
+app.get("/databaseData", databaseData);
 
 app.use("/databaseData", databaseData);
 
