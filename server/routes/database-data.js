@@ -8,12 +8,21 @@ var User = require('../models/user');
 router.post("/", function(req, res) {
   var userEmail = req.decodedToken.email;
   console.log('line 42 req.body', req.body);
+  var currentDate = new Date();
+  // this.updated_at = currentDate;
+  // if (!this.created_at)
+  //   this.created_at = currentDate;
+
   var thing = {
     Asin: req.body.ASIN[0],
     ItemTitle:req.body.ItemAttributes["0"].Title["0"],
-    Price:req.body.OfferSummary["0"].LowestNewPrice["0"].FormattedPrice["0"]
-  }
+    Price:req.body.OfferSummary["0"].LowestNewPrice["0"].FormattedPrice["0"],
+    ProductGroup:req.body.ItemAttributes["0"].ProductGroup["0"],
+    TimeStamp: currentDate
 
+
+  }
+  
   var databaseObject = new Amazon(thing);
 
 
@@ -82,18 +91,18 @@ router.get("/getdb", function(req, res) {
         // Based on the clearance level of the individual, give them access to different information
         Amazon.find({
 
-      }, function(err, myStuff) {
-        if (err) {
-          console.log('Error COMPLETING secrecyLevel query task', err);
-          res.sendStatus(500);
-        } else {
-          // return all of the results where a specific user has permission
-          res.send(myStuff);
-        }
-      });
+        }, function(err, myStuff) {
+          if (err) {
+            console.log('Error COMPLETING secrecyLevel query task', err);
+            res.sendStatus(500);
+          } else {
+            // return all of the results where a specific user has permission
+            res.send(myStuff);
+          }
+        });
+      }
     }
-  }
-});
+  });
 });
 
 
