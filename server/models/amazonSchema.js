@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var amazonSchema = new Schema({
   Asin: { type: String,  required: true },
-  ItemTitle: { type: String},
+  ItemTitle: { type: String, index: { unique: true, dropDups: true }},
   Price: { type: String,  required: true },
   ProductGroup:{ type: String,  required: true },
   TimeStamp: { type: String,  required: true }

@@ -77,7 +77,7 @@ router.post('/', function (req,res){
 var job = new cron.CronJob('30/15 * * * *', function() {
   console.log('Function executed!');
 
-
+var thing ={};
   var historyObject = new PriceHistory (thing);
   var client = amazon.createClient({
     awsTag: "jeremy",
