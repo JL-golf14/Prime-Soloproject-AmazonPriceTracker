@@ -1,5 +1,5 @@
 
-<div ng-if="sc.amazonData.length === 0">Log int to be able to save tracked items.</div>
+<div class="text" ng-if="sc.amazonData.length === 0">Log int to be able to save tracked items.</div>
 
 
 
@@ -11,9 +11,50 @@
 
 
 
+<div class="searchGroup">
 
-<input ng-model="sc.amazonProperty.amazonSearch" placeholder="what to look for?">
+  <select ng-model="sc.amazonProperty.ProductGroup" placeholder="select product group" default="All">
+    <option>All</option>
+<option>Appliances</option>
+<option>OfficeProducts</option>
+<option>Apparel</option>
+<option>Wine</option>
+<option>Wireless</option>
+<option>ArtsAndCrafts</option>
+<option>Miscellaneous</option>
+<option>Electronics</option>
+<option>Jewelry</option>
+<option>MobileApps</option>
+<option>Photo</option>
+<option>Shoes</option>
+<option>KindleStore</option>
+<option>Automotive</option>
+<option>Vehicles</option>
+<option>Pantry</option>
+<option>MusicalInstruments</option>
+<option>DigitalMusic</option>
+<option>Music Instrumentals</option>
+<option>GiftCards</option>
+<option>FashionBaby</option>
+<option>FashionGirls</option>
+<option>FashionBoys</option>
+<option>FashionMen</option>
+<option>Industrial</option>
+<option>Luggage</option>
+<option>OutdoorLiving</option>
+<option>Collectibles</option>
+<option>Fashion</option>
+<option>SportingGoods</option>
+<option>Tools</option>
+<option>Baby</option>
+<option>LawnAndGarden</option>
+
+
+<input class="form-control input-lg" ng-model="sc.amazonProperty.amazonSearch" placeholder="what to look for?">
+
 <button ng-click="sc.addSearch()">Look in Amazon</button>
+
+</div>
 <div class="content_container">
 <!-- <table>
 
@@ -60,8 +101,11 @@
     <th>PHOTOS</th>
     </tr>
   </thead> -->
-  <tbody>
+  <tbody class="square">
     <tr>
+      <div >
+
+
       <td class="deal_top_inner jeremy-custom" ng-repeat="item in sc.amazonData.data">
         <div class="title">
 
@@ -87,42 +131,20 @@
 
         {{item.ItemAttributes["0"].ListPrice["0"].FormattedPrice["0"]}}
         </div>
-      <!-- </td>
-      <td> -->
+
       <img ng-src='{{item.ImageSets["0"].ImageSet["1"].MediumImage["0"].URL["0"]}}' alt="">
-      <p></p>
-      <button type="button" ng-click="sc.saveItem(item)">add to watchlist</button>
+
+
+    <div class="buttonHolder">
+
+
+      <button class="btn addButton" type="button" ng-click="sc.saveItem(item)">add to watchlist</button>
+      </div>
     </td>
+    </div>
     </tr>
   </tbody>
 </table>
-<!-- <h1>AMAZON ASIN.   {{sc.amazonData.data.ASIN["0"]}}</h1>
-<h1>Price    {{sc.amazonData.data["0"].ItemAttributes["0"].ListPrice["0"].FormattedPrice["0"]}}</h1>
-
-
-
-<img ng-src='{{sc.amazonData.data["0"].ImageSets["0"].ImageSet["1"].MediumImage["0"].URL["0"]}}' alt="">
-
-<img ng-src='{{sc.amazonData.data["0"].ImageSets["0"].ImageSet["0"].MediumImage["0"].URL["0"]}}' alt=""> -->
-
-
 
 
 </div>
-<!--  div container for table
-
-
-
-
-
-<!<h2>next item</h2>
-<br>
-<br>
-<h1>AMAZON ASIN.   {{sc.amazonData.data.ASIN["1"]}}</h1>
-<h1>Price    {{sc.amazonData.data.ItemAttributes["1"].ListPrice["0"].FormattedPrice["0"]}}</h1>
-
-.data["0"].MediumImage["0"].URL["0"] -->
-
-<!-- <img src='{{sc.amazonData.data.ImageSets["0"].ImageSet["1"].MediumImage["0"].URL["0"]}}' alt=""> -->
-</div>
-</body>

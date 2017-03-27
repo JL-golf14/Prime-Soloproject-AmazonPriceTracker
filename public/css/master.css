@@ -1,12 +1,39 @@
 .table{
   display: table;
 border-collapse: separate;
-border-spacing: 5px;
+border-spacing: 10px;
 border-color: black;
+font: 13px/1.231 arial,helvetica,clean,sans-serif;
 font-size: inherit;
 border-collapse: separate;
+position: relative;
 }
+.searchGroup{
+  display: inline-block !important;
+}
+.form-control{
+  width: 300px !important;
+}
+.historyHeaders{
+  font-size: 25px;
+}
+.addButton{
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 2px 4px;
+  font-size: 95%;
 
+  /*position: absolute;
+bottom: 0;*/
+  font-weight: normal;
+  display: inline-block;
+  border: 1px solid blue;
+  color: blue;
+  background-color: #fff !important;
+  background: 0;
+  white-space: nowrap;
+}
 h1{
   text-align: center;
 color: red;
@@ -32,27 +59,31 @@ to {color: silver;}
 from {color: gold;}
 to {color: red;}
 }
-
+.btn-outline-default{
+  background-color: white;
+  color: blue;
+  font-weight: 700;
+  font-size: 18px;
+  border: none;
+}
 header{
   font-size: 35px;
 }
 title{
   font-size: 180px!important;
 }
-td{
+.jeremy-custom{
   width:280px;
-
+  height: 400px;
   display: inline-flex;
 }
 .deal_top_inner {
-    display: inline-block;;;
-    border-top: 3px solid #ddd;
-    border-right: 3px solid #ddd;
-    border-left: 3px solid #ddd;
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
+    display: inline-block;
+    border: 3px solid #ddd;
+    border-radius: 3px;
+
     height: 100%;
-    height: 350px;
+    height: 400px;
     padding: 6px 8px 3px 8px;
     background-color: #f5f5f5;
 }
@@ -64,19 +95,29 @@ td{
   font-style: bold;
   display: inline-flex;
   font-size-adjust: auto;
+  }
+.btn-default{
+  background-color: MidnightBlue;
+  color: white;
 
 }
+.trackTitle{
+  font-size: 18px !important;
+}
 .price{
-  font:"blue";
+  color:green;
   font-size: 22px;
+  font-weight: 700;
 }
 .content_container {
-    width: 1200px;
+    width: 1400px;
     margin: 3px auto;
     text-align: left;
     background-color: white;
 }
-
+.buttonHolder{
+  position: relative;
+}
 /*.jeremy-custom {
   display: inline;
 }*/

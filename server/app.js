@@ -9,13 +9,11 @@ var amazonData = require('./routes/amazon-tracker-data');
 var databaseData = require('./routes/database-data');
 var amazon = require('amazon-product-api');
 var portDecision = process.env.PORT || 5000;
-
-
 var cron = require('cron');
 
-var job = new cron.CronJob('* 59 * * *', function() {
-    console.log('Function executed!');
-}, null, true);
+// var job = new cron.CronJob('* * * * *', function() {
+//     console.log('Function executed!');
+// }, null, true);
 
 app.get('/', function(req, res){
   res.sendFile(path.resolve('./public/views/index.html'));
@@ -25,6 +23,7 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 
 mongoConnection.connect();
+
 
 // Decodes the token in the request header and attaches the decoded token to req.decodedToken on the request.
 app.use(decoder.token);
@@ -36,9 +35,9 @@ app.use(decoder.token);
 // ---------------------------------- ------------------- ------------------- -------------------
 //
  app.use("/privateData", privateData);
-app.use("/amazonData", amazonData);
-//
 
+//
+app.use("/amazonData", amazonData);
 app.get("/databaseData", databaseData);
 
 app.use("/databaseData", databaseData);

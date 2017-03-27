@@ -8,8 +8,7 @@ var cron = require('cron');
 var Asin="";
 
 router.get('/', function (req,res){
-  var index = req.params.index;
-  console.log(index, "index");
+
 
   var client = amazon.createClient({
     awsTag: "jeremy",
@@ -46,10 +45,10 @@ router.post('/', function (req,res){
   client.itemSearch({
     ItemPage:5,
     Keywords: searchObject.amazonSearch,
-    SearchIndex: 'All',
+    SearchIndex: searchObject.ProductGroup,
     ResponseGroup: 'Large'
   }).then(function(results){
-    console.log("AZ ADD RESULTS",results);
+    // console.log("AZ ADD RESULTS",results);
     res.send(results);
   }).catch(function(err){
     console.log('error retreiving results', err[0].Error);
@@ -73,74 +72,76 @@ router.post('/', function (req,res){
 ////cron goes here
 
 
+// router.get('/runcron', function(req, res) {
 
-var job = new cron.CronJob('30/15 * * * *', function() {
-  console.log('Function executed!');
+ var job = new cron.CronJob('* * * * *', function() {
+ //  console.log('backdoor Function executed!');
+ // //
 
-var thing ={};
-  var historyObject = new PriceHistory (thing);
-  var client = amazon.createClient({
-    awsTag: "jeremy",
-    awsId:'AKIAIOZRXUNCRRIY5DDQ',
-    awsSecret: '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'
-  });
+
 
 
   Amazon.find({}, function(err, myStuff) {
     if (err) {
       console.log('Error COMPLETING secrecyLevel query task', err);
       res.sendStatus(500);
-    }
-    for (var i = 0; i < myStuff.length; i++) {
-      myStuff[i];
-
-      // console.log(myStuff);
-      ////////////////////////////////////////
-      // return all of the results where a specific user has permission
-      // res.send(myStuff);
-      // console.log("MY STUFF FROM DB", myStuff);
-      //   }
-      // });
-      //////////////////////////////////////////
-      // console.log("________LOG OF myStuff.asin",myStuff[0].Asin);
-
-      client.itemSearch({
-        Operation:'ItemLookup',
-        ItemPage:5,
-        IdType:'Asin',
-        ItemId:myStuff[i].Asin,
-        SearchIndex: myStuff[i].ProductGroup,
-        Title:myStuff[i].Title,
-        ResponseGroup: 'Medium'
-      }).then(function(results){
-        console.log("AZ ADD RESULTS",results);
-
-        var thing =  { ProductId:myStuff[i]._id,
-          Asin: results.data["0"].ASIN["0"],
-          ItemTitle:results.data["0"].ItemAttributes["0"].Title["0"],
-          Price:results.data["0"].OfferSummary["0"].LowestNewPrice["0"].FormattedPrice["0"],
-          ProductGroup:results.data["0"].ItemAttributes["0"].ProductGroup["0"],
-          TimeStamp: currentDate
-        };
+    }else{
+      // console.log("logging myStuff",myStuff);
+      for (var i = 0; i < 1; i++) {
+        console.log("mystuff[i] is .........", i);
 
 
-        historyObject.insert(function(err, historyObject) {
-          // PriceHistory.insert({
-
-          // })
-          // insert goes here back to my database
-        }).catch(function(err){
-          console.log('error retreiving results', err[0].Error);
-          res.sendStatus(500);
-
-
+        var client = amazon.createClient({
+          awsTag: "jeremy",
+          awsId:'AKIAIOZRXUNCRRIY5DDQ',
+          awsSecret: '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'
         });
-      });
-    };
-  });
-  //
-}, null, true);
-// ======================================================================================================================================================================================================================================
+
+        client.itemSearch({
+          Operation:'ItemLookup',
+          ItemPage:5,
+          IdType:'Asin',
+          ItemId:myStuff[i].Asin,
+          // ProductGroup: 'myStuff[i].ProductGroup',
+          // Title:myStuff[i].Title,
+          ResponseGroup: 'Offers'
+        }).then(
+          function(results){
+            console.log("AZ ADD RESULTS............_____________>>>>>>>>>>>>",results);
+
+              var thing =  { ProductId:myStuff[i]._id,
+                Asin: results.data["0"].ASIN["0"],
+                ItemTitle:results.data["0"].ItemAttributes["0"].Title["0"],
+                Price:results.data["0"].OfferSummary["0"].LowestNewPrice["0"].FormattedPrice["0"],
+                // ProductGroup:results.data["0"].ItemAttributes["0"].ProductGroup["0"],
+                TimeStamp: currentDate
+              };
+
+              var priceHistory = new PriceHistory (thing);
+
+              console.log("thing logged here..........",thing);
+
+              PriceHistory.save(function(err, thing) {
+
+                console.log("thing logged after history object");
+                res.sendStatus(201);
+
+                // insert goes here back to my database
+              })
+
+          }) // end .then
+          .catch(function(err){
+            console.log('error retreiving results', err[0].Error);
+            res.sendStatus(500);
+          });
+
+        } // end for loop
+      };
+    }); // end amazon find in my DB
+    //
+  }); /* null, true);*/
+
+  // ======================================================================================================================================================================================================================================
 
 
 
@@ -149,4 +150,4 @@ var thing ={};
 
 
 
-module.exports = router;
+  module.exports = router;

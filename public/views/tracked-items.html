@@ -4,13 +4,13 @@
 
 
 <table class="table">
-<th>
-            Title
-                    Price    Asin</th>
+<th class="historyHeaders">Title</th>
+<th class="historyHeaders">Price</th>
+<th class="historyHeaders">Asin</th>
 
 <tbody>
       <tr ng-repeat="stuff in tc.myDBStuff">
-        <td>
+        <td class="trackTitle">
            {{stuff.ItemTitle}}
         </td>
         <td>
@@ -20,6 +20,7 @@
 
           {{stuff.Asin}}
         </td>
+        <td><button class='btn btn-default' type="button" name="button">see price history</button></td>
       </tr>
     </tbody>
 </table>
