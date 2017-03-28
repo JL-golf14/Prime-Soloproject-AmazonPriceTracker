@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var historySchema = new Schema({
-  _id: { type: String},
+  ProductId: { type: String},
   Asin: { type: String,  required: true },
   ItemTitle: { type: String},
   // ProductId:{ type: String},

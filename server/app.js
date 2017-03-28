@@ -12,7 +12,7 @@ var portDecision = process.env.PORT || 5000;
 var cron = require('cron');
 
 // var job = new cron.CronJob('* * * * *', function() {
-//     console.log('Function executed!');
+//     console.log('Function on app executed!');
 // }, null, true);
 
 app.get('/', function(req, res){

@@ -19,6 +19,7 @@
     "crontab": "^1.1.3",
     "express": "^4.14.0",
     "firebase-admin": "^4.0.3",
-    "mongoose": "^4.7.0"
+    "mongoose": "^4.7.0",
+    "piranha": "^1.1.0"
   }
 }

@@ -110,7 +110,6 @@ function getAmazon(){
     var firebaseUser = auth.$getAuth();
 
     // firebaseUser will be null if not logged in
-    console.log(self.amazonSearch);
     if(firebaseUser) {
       // This is where we make our call to our server
       firebaseUser.getToken().then(function(idToken){
