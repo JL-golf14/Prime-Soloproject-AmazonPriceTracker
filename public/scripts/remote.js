@@ -13,7 +13,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'TrackerController',
             controllerAs: 'tc'
         })
-        .when('/charts/:asin?', {
+        .when('/charts/:Asin', {
             templateUrl: '/views/charts.html',
             controller: 'ChartController',
             controllerAs: 'cc'

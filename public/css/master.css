@@ -56,11 +56,12 @@ from {color: gold;}
 to {color: silver;}
 }
 body {
-    background-image:url(az.jpg);
+    background-image:url(asdf.jpeg);
     background-attachment: fixed;
-    background-size: 60%;
+    background-size: 120%;
+
     text-align: center;
-    background-position: center;
+    background-position: left;
 }
 
 

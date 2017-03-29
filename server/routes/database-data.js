@@ -4,7 +4,8 @@ var router = express.Router();
 var Amazon = require('../models/amazonSchema');
 var User = require('../models/user');
 var FusionCharts = require("fusioncharts");
-
+var PriceHistory = require('../models/historySchema');
+var pricehistories = require('../models/historySchema');
 router.post("/", function(req, res) {
   var userEmail = req.decodedToken.email;
   console.log('line 42 req.body', req.body);
@@ -103,7 +104,9 @@ router.get("/getdb", function(req, res) {
 
 router.get("/getCharts/:Asin", function(req, res) {
   var userEmail = req.decodedToken.email;
-  var paramerTitle = req.query.factoryGet.ItemTitle;
+  var paramAsin=req.params.Asin;
+  console.log(paramAsin.Asin,"this is the asin on back side");
+  // var paramerTitle = req.query.factoryGet.ItemTitle;
   // Check the user's level of permision based on their email
   User.findOne({
     email: userEmail
@@ -118,8 +121,9 @@ router.get("/getCharts/:Asin", function(req, res) {
         console.log('No user found with that email. Have you added this person to the database? Email: ', req.decodedToken.email);
         res.sendStatus(403);
       } else {
-          console.log("PARAMATER TITLE IS>>",paramerTitle);
-        pricehistories.find({ ItemTitle:paramerTitle
+
+        pricehistories.find({Asin:paramAsin
+
 
         }, function(err, myStuff) {
           if (err) {
