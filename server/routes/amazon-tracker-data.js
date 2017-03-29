@@ -6,7 +6,9 @@ var Amazon = require('../models/amazonSchema');
 var PriceHistory = require('../models/historySchema');
 var cron = require('cron');
 var Asin="";
-var currentDate = new Date();
+var currentDate = new Date
+var FusionCharts = require("fusioncharts");
+
 router.get('/', function (req,res){
   var client = amazon.createClient({
     awsTag: "jeremy",
@@ -27,7 +29,6 @@ router.get('/', function (req,res){
 
 });
 
-
 router.post('/', function (req,res){
   var searchObject = req.body;
   var index = req.params.index;
@@ -45,7 +46,11 @@ router.post('/', function (req,res){
     SearchIndex: searchObject.ProductGroup,
     ResponseGroup:'Large'
   }).then(function(results){
-    // console.log("AZ ADD RESULTS",results);
+
+
+
+    results.SearchIndex = searchObject.ProductGroup;
+      console.log("AZ ADD RESULTS",results);
     res.send(results);
   }).catch(function(err){
     console.log('error retreiving results', err[0].Error);
@@ -71,19 +76,15 @@ router.post('/', function (req,res){
 
 // router.get('/runcron', function(req, res) {
 
-var job = new cron.CronJob('* * * * *', function() {
+var job = new cron.CronJob('0,15,30,45 * * * *', function() {
   console.log('backdoor Function executed!');
-  // //
-
-
-
 
   Amazon.find({}, function(err, myStuff) {
 
 
 
     if (err) {
-      
+
       console.log('Error COMPLETING secrecyLevel query task', err);
       res.sendStatus(500);
     }else{

@@ -20,7 +20,21 @@
 
           {{stuff.Asin}}
         </td>
-        <td><button class='btn btn-default' type="button" name="button">see price history</button></td>
+
+
+
+        <td>
+
+          <button ng-click="tc.getAmazonChart(stuff)" class='btn btn-default' type="button" name="button">
+
+            <!-- see price history -->
+
+              <a ng-href="#charts/{{stuff.Asin}}">Click to view the chart! {{stuff.Asin}}</a>
+
+          </button>
+
+
+        </td>
       </tr>
     </tbody>
 </table>

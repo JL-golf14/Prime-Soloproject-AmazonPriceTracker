@@ -3,15 +3,12 @@ var path = require('path');
 var router = express.Router();
 var Amazon = require('../models/amazonSchema');
 var User = require('../models/user');
-
+var FusionCharts = require("fusioncharts");
 
 router.post("/", function(req, res) {
   var userEmail = req.decodedToken.email;
   console.log('line 42 req.body', req.body);
   var currentDate = new Date();
-  // this.updated_at = currentDate;
-  // if (!this.created_at)
-  //   this.created_at = currentDate;
 
   var thing = {
     Asin: req.body.ASIN[0],
@@ -19,10 +16,8 @@ router.post("/", function(req, res) {
     Price:req.body.OfferSummary["0"].LowestNewPrice["0"].FormattedPrice["0"],
     ProductGroup:req.body.ItemAttributes["0"].ProductGroup["0"],
     TimeStamp: currentDate
-
-
   }
-  
+
   var databaseObject = new Amazon(thing);
 
 
@@ -47,8 +42,6 @@ router.post("/", function(req, res) {
             // return all of the results where a specific user has permission
             res.sendStatus(201);
 
-            // // var user = user.clearanceLevel:2;
-            // secretObject.secrecyLe
           }
 
         })
@@ -105,8 +98,42 @@ router.get("/getdb", function(req, res) {
   });
 });
 
+//                                   get charts below
+//  ===============================================================================================================================================================================
 
+router.get("/getCharts/:Asin", function(req, res) {
+  var userEmail = req.decodedToken.email;
+  var paramerTitle = req.query.factoryGet.ItemTitle;
+  // Check the user's level of permision based on their email
+  User.findOne({
+    email: userEmail
+  }, function(err, user) {
+    if (err) {
+      console.log('Error COMPLETING clearanceLevel query task', err);
+      res.sendStatus(500);
+    } else {
+      console.log(user);
+      if (user == null) {
+        // If the user is not in the database, return a forbidden error status
+        console.log('No user found with that email. Have you added this person to the database? Email: ', req.decodedToken.email);
+        res.sendStatus(403);
+      } else {
+          console.log("PARAMATER TITLE IS>>",paramerTitle);
+        pricehistories.find({ ItemTitle:paramerTitle
 
+        }, function(err, myStuff) {
+          if (err) {
+            console.log('Error COMPLETING secrecyLevel query task', err);
+            res.sendStatus(500);
+          } else {
+            // return all of the results where a specific user has permission
+            res.send(myStuff);
+          }
+        });
+      }
+    }
+  });
+});
 
 
 

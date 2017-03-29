@@ -13,11 +13,12 @@ myApp.config(['$routeProvider', function($routeProvider) {
             controller: 'TrackerController',
             controllerAs: 'tc'
         })
-        .when('/charts', {
+        .when('/charts/:asin?', {
             templateUrl: '/views/charts.html',
             controller: 'ChartController',
             controllerAs: 'cc'
         })
+
         .otherwise({
             redirectTo: 'home'
         });

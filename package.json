@@ -12,6 +12,7 @@
   "dependencies": {
     "amazon-product-api": "^0.4.3",
     "angular": "1.5.8",
+    "angular-chart.js": "^1.1.1",
     "angular-route": "^1.5.8",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
@@ -19,6 +20,7 @@
     "crontab": "^1.1.3",
     "express": "^4.14.0",
     "firebase-admin": "^4.0.3",
+    "fusioncharts": "^3.12.0",
     "mongoose": "^4.7.0",
     "piranha": "^1.1.0"
   }

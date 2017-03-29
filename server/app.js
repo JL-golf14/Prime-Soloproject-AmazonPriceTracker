@@ -10,7 +10,7 @@ var databaseData = require('./routes/database-data');
 var amazon = require('amazon-product-api');
 var portDecision = process.env.PORT || 5000;
 var cron = require('cron');
-
+var FusionCharts = require("fusioncharts");
 // var job = new cron.CronJob('* * * * *', function() {
 //     console.log('Function on app executed!');
 // }, null, true);

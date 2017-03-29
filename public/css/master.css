@@ -9,13 +9,18 @@ border-collapse: separate;
 position: relative;
 }
 .searchGroup{
-  display: inline-block !important;
+  /*display: inline-block !important;*/
 }
-.form-control{
+/*.form-control{
   width: 300px !important;
-}
+}*/
 .historyHeaders{
   font-size: 25px;
+}
+
+select{
+  width:400px;
+  height: 40px;
 }
 .addButton{
   -webkit-border-radius: 5px;
@@ -49,8 +54,13 @@ animation-direction: alternate, reverse, normal;
 @-webkit-keyframes example {
 from {color: gold;}
 to {color: silver;}
-
-
+}
+body {
+    background-image:url(az.jpg);
+    background-attachment: fixed;
+    background-size: 60%;
+    text-align: center;
+    background-position: center;
 }
 
 
@@ -96,9 +106,16 @@ title{
   display: inline-flex;
   font-size-adjust: auto;
   }
+  /*#dropPlaceholder{
+    font-size: 25px !important;
+    text-align: center !important;
+  }*/
 .btn-default{
   background-color: MidnightBlue;
   color: white;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 9px;
 
 }
 .trackTitle{
