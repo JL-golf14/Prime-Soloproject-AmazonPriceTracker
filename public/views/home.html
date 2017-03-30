@@ -1,13 +1,17 @@
 
-<div class="text" ng-if="sc.amazonData.length === 0"><h2>Log int to be able to save tracked items.</h2></div>
-<div class="row">
-  <ul class="nav nav-pills nav-justified col-lg-4">
-<!-- <div class="searchGroup row"> -->
-  <!-- <div class='col-lg-4'> -->
-  <select ng-model="sc.amazonProperty.ProductGroup" >
-    <option value="" id="dropPlaceholder" class="btn"> <h4>-- Choose a Product Category--</h4></option>
+<div class="text" ng-if="sc.amazonData.length === 0"><h1>Log int to be able to save tracked items.</h1></div>
+
+<table>
+  <tr>
 
 
+  <th class="dropdownbox">
+
+<!-- <div class="row"> -->
+
+<!-- <ul class="col-md-4"> -->
+<select class="selects" ng-model="sc.amazonProperty.ProductGroup">
+<option value="" class="btn dropPlaceholder">Product Category</option>
 <option>Apparel</option>
 <option>Automotive</option>
 <option>Baby</option>
@@ -37,71 +41,72 @@
 <option>Tools</option>
 <option>VideoGames</option>
 <option>WirelessAccessories</option>
-</ul>
-<!-- <div class='col-md-4'> -->
-<ul class="col-lg-4">
-<input class="form-control input-lg {"text-align":'center'}" ng-model="sc.amazonProperty.amazonSearch" placeholder="what to look for?">
-</ul>
 
-<div class='col-md-4'>
-<ul class="col-lg-4">
+
+
+
+    </th>
+<th class="inputHeader">
+  <input class="input" ng-model="sc.amazonProperty.amazonSearch" placeholder="what to look for?">
+</th>
+    <th class="lookHeader">
 <button class="btn btn-default" ng-click="sc.addSearch()">Look in Amazon</button>
+    </th>
+  </tr>
+</table>
+<!-- <div class='col-md-4'> -->
+<!-- <ul class="col-md-4"> -->
 
 
 
 
 
-</div>
-</ul>
-</div>
+
 
 <div class="content_container">
 
 <table class="table">
 
-  <tbody class="square">
-    <tr>
-      <div >
+<tbody class="square">
+  <tr>
+    <!-- <div > -->
 
 
-      <td class="deal_top_inner jeremy-custom" ng-repeat="item in sc.amazonData.data">
-        <div class="title">
+    <td class="deal_top_inner jeremy-custom" ng-repeat="item in sc.amazonData.data">
+      <div class="title">
 
-      {{item.ItemAttributes["0"].Title["0"]}}
-        </div>
-      <!-- </td>
-
-      <td> -->
-      <br>
-      <div class="asin">
-
-
-
-        {{item.ASIN["0"]}}
-        </div>
-        <br>
-        <!-- </td>
-        <br>
-        <td> -->
-        <div class="price">$
-
-
-
-        {{item.Offers["0"].Offer["0"].OfferListing["0"].Price["0"].Amount["0"]/100.00}}
-        </div>
-
-      <img ng-src='{{item.ImageSets["0"].ImageSet["1"].MediumImage["0"].URL["0"]}}' alt="">
-
-
-    <div class="buttonHolder">
-
-
-      <button class="btn addButton" type="button" ng-click="sc.saveItem(item)">add to watchlist</button>
+    {{item.ItemAttributes["0"].Title["0"]}}
       </div>
-    </td>
-    </div>
-    </tr>
-  </tbody>
+    <!-- </td>
+
+    <td> -->
+
+    <div class="asin">
+
+
+
+      {{item.ASIN["0"]}}
+      </div>
+      <br>
+      <div class="price">
+
+        $
+
+      {{item.Offers["0"].Offer["0"].OfferListing["0"].Price["0"].Amount["0"]/100.00}}
+      </div>
+
+    <img ng-src='{{item.ImageSets["0"].ImageSet["1"].MediumImage["0"].URL["0"]}}' alt="">
+
+<!--
+  <div class="buttonHolder"> -->
+
+
+    <button class="btn active addButton animated jello" type="button" ng-click="sc.saveItem(item)">add to watchlist</button>
+    <!-- </div> -->
+  </td>
+  <!-- </div> -->
+  </tr>
+</tbody>
 </table>
 
 

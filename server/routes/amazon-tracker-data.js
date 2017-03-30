@@ -17,7 +17,7 @@ router.get('/', function (req,res){
   });
   client.itemSearch({
     ItemPage:5,
-    Keywords:"Top Sellers",
+    Keywords:"rare",
     SearchIndex: 'All',
     ResponseGroup: 'Large'
   }).then(function(results){
@@ -38,16 +38,14 @@ router.post('/', function (req,res){
     awsTag: "jeremy",
     awsId:'AKIAIOZRXUNCRRIY5DDQ',
     awsSecret: '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'
-
   });
+
   client.itemSearch({
     ItemPage:5,
     Keywords: searchObject.amazonSearch,
     SearchIndex: searchObject.ProductGroup,
     ResponseGroup:'Large'
   }).then(function(results){
-
-
 
     results.SearchIndex = searchObject.ProductGroup;
       console.log("AZ ADD RESULTS",results);
@@ -61,34 +59,15 @@ router.post('/', function (req,res){
 
 //                      automate price function below ======================================================================================================================================================================================================================================
 
-// Cron, every hour run this code
-// for each item in the "products" collection
-// make a request on the ASIN for a current price
-// insert that price into product-price-history {_id: auto generated, product_id: point back to other collection (currentProduct._id), price: snapshot at current time when cron runs (from Amazon), time: when cron ran (mongoose default)}
 
-
-
-//
-
-
-////cron goes here
-
-
-// router.get('/runcron', function(req, res) {
-
-var job = new cron.CronJob('0,15,30,45 * * * *', function() {
-  console.log('backdoor Function executed!');
+var job = new cron.CronJob('0,30 * * * *', function() {
 
   Amazon.find({}, function(err, myStuff) {
 
-
-
     if (err) {
-
-      console.log('Error COMPLETING secrecyLevel query task', err);
+      console.log('Err', err);
       res.sendStatus(500);
     }else{
-
 
         var client = amazon.createClient({
           awsTag: "jeremy",
@@ -96,14 +75,8 @@ var job = new cron.CronJob('0,15,30,45 * * * *', function() {
           awsSecret: 'Q2bfAe/EHzK/0R2vGvZD8ALBm8yw9Boqz7gyjGdU'
         });
 
-      // console.log("logging myStuff",myStuff);
-      // for (var i = 0; i < 1; i++) {
+
       myStuff.forEach(function(myThing){
-
-
-        console.log("myThingProduct Group is 1111111111111",myThing.ProductGroup,myThing.Asin);
-
-
 
         client.itemSearch({
           // Operation:'ItemSearch',
@@ -115,25 +88,10 @@ var job = new cron.CronJob('0,15,30,45 * * * *', function() {
         }).then(
           function(results){
             if (err) {
-
-              console.log("error errrrrrrrrr function after search  err===",err);
+              console.log("server side rr",err);
 
 
             }
-            console.log("this loggs success after then!!!!!!2222222222222222222222222",
-
-            results[0].Offers[0].Offer[0].OfferListing[0].Price[0].Amount[0],
-            results[0].ItemAttributes[0].Title[0],
-            results[0].ItemAttributes[0].PartNumber[0],
-            currentDate
-
-
-
-          );
-            // console.log("thing logged here past then!!!!!!!! ..........",thing);
-
-
-
 
             var thing =  { ProductId:results[0].ItemAttributes[0].PartNumber[0],
               Asin:results[0].ASIN[0],
@@ -142,14 +100,9 @@ var job = new cron.CronJob('0,15,30,45 * * * *', function() {
               // ProductGroup:results.data["0"].ItemAttributes["0"].ProductGroup["0"],
               TimeStamp: currentDate
             };
-            console.log("thing logged here   past then 3333333333333333!!!!!!!! ..........",thing);
             var priceHistory = new PriceHistory(thing);
-
-            console.log("thing logged here   past then!!!!!!!! ..........",thing);
-
             priceHistory.save(function(thing) {
-
-              console.log("thing logged after history object  HUUUUUUUGE!!!!!!!  333333333333");
+              console.log("Saved items to the DB at",currentDate);
               // insert goes here back to my database
             })
           }) // end .then
@@ -164,14 +117,6 @@ var job = new cron.CronJob('0,15,30,45 * * * *', function() {
     }); // end amazon find in my DB
     //
 }, null, true);
-
-  // =======================================================================================================================================================================================================================
-
-
-
-
-
-
 
 
   module.exports = router;

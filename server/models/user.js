@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
   email: { type: String, required: true, unique: true },
-  clearanceLevel: { type: Number, required: true, default: 2, min: 0, max: 10}
+  clearanceLevel: { type: Number}
 });
 
 var User = mongoose.model('User', userSchema);

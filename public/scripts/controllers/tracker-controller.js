@@ -1,5 +1,5 @@
 
-myApp.controller('TrackerController',["$firebaseAuth","$http","$routeParams","ChartsFactory", function($firebaseAuth, $http,$routeParams,ChartsFactory) {
+myApp.controller('TrackerController',["$firebaseAuth","$http","$routeParams", function($firebaseAuth, $http,$routeParams) {
   var auth = $firebaseAuth();
   var self = this;
   self.amazonProperty = {};
@@ -39,37 +39,6 @@ console.log("route params on tracker controller",$routeParams);
       });
     };
 
-  // self.getAmazonChart = function(stuff){
-  //     console.log('getAmazonChart clicked');
-  //     console.log("this is the stuff....",stuff);
-  //     auth.$onAuthStateChanged(function(firebaseUser){
-  //       // firebaseUser will be null if not logged in
-  //       if(firebaseUser) {
-  //         // This is where we make our call to our server
-  //         firebaseUser.getToken().then(function(idToken){
-  //           $http({
-  //             method: 'GET',
-  //             url: '/databaseData/getCharts/:',
-  //             headers: {
-  //               id_token: idToken
-  //             },
-  //             params: {
-  //                 item: stuff.Asin
-  //             }
-  //           }).then(function(response){
-  //             console.log("amazon response Data ....................",response);
-  //             self.amazonData = response;
-  //           });
-  //         });
-  //       } else {
-  //         console.log('Not logged in or not authorized. amazon side request');
-  //         self.results = [];
-  //       }
-
-  //     });
-  //   };
-
-
 
 function getAmazonChart(){
     auth.$onAuthStateChanged(function(firebaseUser){
@@ -85,7 +54,7 @@ function getAmazonChart(){
             }
           }).then(function(response){
             console.log("amazon response Data ....................",response);
-            self.amazonChart = response;
+            self.amazonChart = response.data;
           });
         });
       } else {

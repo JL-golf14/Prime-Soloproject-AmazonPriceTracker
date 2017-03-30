@@ -1,209 +1,25 @@
+var myApp = angular.module('myApp', ['ngRoute','firebase','chart.js']);
 
-myApp.controller("SampleCtrl",["$firebaseAuth","$http", function($firebaseAuth, $http) {
-  var auth = $firebaseAuth();
-  var self = this;
-  self.amazonProperty = {};
-  self.newSecret = {};
-  self.results =[];
-  self.amazonData=[];
+myApp.config(['$routeProvider', function($routeProvider) {
 
-  // This code runs whenever the user logs in
-  self.logIn = function(){
-    auth.$signInWithPopup("google").then(function(firebaseUser) {
-      console.log("Firebase Authenticated as: ", firebaseUser.user.displayName);
-            console.log("Firebase Authenticated clearanceLevel: ", firebaseUser.user.clearanceLevel);
-    }).catch(function(error) {
-      console.log("Authentication failed: ", error);
-    });
-  };
+    $routeProvider
+        .when('/home', {
+            templateUrl: '/views/home.html',
+            controller: 'SampleCtrl',
+            controllerAs: 'sc'
+        })
+        .when('/my_track_list', {
+            templateUrl: '/views/tracked-items.html',
+            controller: 'TrackerController',
+            controllerAs: 'tc'
+        })
+        .when('/charts/:Asin?', {
+            templateUrl: '/views/charts.html',
+            controller: 'ChartController',
+            controllerAs: 'cc'
+        })
 
-
-  //
-  // getSecrets();
-  // function getSecrets(){
-  //   // This code runs whenever the user changes authentication states
-  //   // e.g. whevenever the user logs in or logs out
-  //   // this is where we put most of our logic so that we don't duplicate
-  //   // the same things in the login and the logout code
-  //   auth.$onAuthStateChanged(function(firebaseUser){
-  //     // firebaseUser will be null if not logged in
-  //     if(firebaseUser) {
-  //       // This is where we make our call to our server
-  //       firebaseUser.getToken().then(function(idToken){
-  //         $http({
-  //           method: 'GET',
-  //           url: '/privateData',
-  //           headers: {
-  //             id_token: idToken
-  //           }
-  //         }).then(function(response){
-  //           self.secretData = response.data;
-  //         });
-  //       });
-  //     } else {
-  //       console.log('Not logged in or not authorized.');
-  //       self.secretData = [];
-  //     }
-  //
-  //   });
-  // };
-// =======================================================================================================
-
-
-
-
-
-
-
-
-
-
-
-getAmazon();
-function getAmazon(){
-  console.log("AMAZON FUNCTION STARTED");
-  auth.$onAuthStateChanged(function(firebaseUser){
-    // firebaseUser will be null if not logged in
-    if(firebaseUser) {
-      // This is where we make our call to our server
-      firebaseUser.getToken().then(function(idToken){
-        $http({
-          method: 'GET',
-          url: '/amazonData',
-          headers: {
-            id_token: idToken
-          }
-        }).then(function(response){
-          console.log("amazon response Data ....................",response);
-          self.amazonData = response;
+        .otherwise({
+            redirectTo: 'home'
         });
-      });
-    } else {
-      console.log('Not logged in or not authorized. amazon side request');
-      self.results = [];
-    }
-
-  });
-};
-
-
-
-
-
-
-
-
-
- self.addSearch = function(){
-  console.log("AMAZON ADD CLicked ");
-  // This code runs whenever the user changes authentication states
-  // e.g. whevenever the user logs in or logs out
-  // this is where we put most of our logic so that we don't duplicate
-  // the same things in the login and the logout code
-
-
-    var firebaseUser = auth.$getAuth();
-
-    // firebaseUser will be null if not logged in
-    console.log(self.amazonSearch);
-    if(firebaseUser) {
-      // This is where we make our call to our server
-      firebaseUser.getToken().then(function(idToken){
-        $http({
-          method: 'POST',
-          url: '/amazonData',
-          headers: {
-            id_token: idToken
-          },
-
-          data:self.amazonProperty
-        }).then(function(response){
-          console.log("amazon response Data ....................",response);
-          self.amazonData = response;
-        });
-      });
-    } else {
-      console.log('Not logged in or not authorized. amazon side request');
-      self.results = [];
-    }
-
-};
-
-
-
-
-
-
-
-
-self.saveItem = function(item){
- console.log("AMAZON save CLicked ",item);
-
-   var firebaseUser = auth.$getAuth();
-
-   if(firebaseUser) {
-     // This is where we make our call to our server
-     firebaseUser.getToken().then(function(idToken){
-       $http({
-         method: 'POST',
-         url: '/databaseData',
-         headers: {
-           id_token: idToken
-         },
-
-         data:item
-       }).then(function(response){
-         console.log("amazon response Data ....................",response);
-         //self.amazonData = response;
-       });
-     });
-   } else {
-     console.log('Not logged in or not authorized. amazon side request');
-     self.results = [];
-   }
-
-};
-
-
-
-// =====================================================================================================
-  // self.addSecret = function(){
-  //   console.log("client side",self.newSecret);
-  //   auth.$onAuthStateChanged(function(firebaseUser){
-  //         console.log( "client fire user",firebaseUser);
-  //     // firebaseUser will be null if not logged in
-  //     if(firebaseUser) {
-  //       // This is where we make our call to our server
-  //       firebaseUser.getToken().then(function(idToken){
-  //         $http({
-  //           method: 'POST',
-  //           url: '/privateData'
-  //           ,
-  //           headers: {
-  //             id_token: idToken
-  //
-  //           },
-  //           data:self.newSecret
-  //         }).then(function(response){
-  //
-  //           getSecrets();
-  //         });
-  //       });
-  //     } else {
-  //       console.log('Not logged in or not authorized.');
-  //       self.secretData = [];
-  //
-  //
-  //     }
-  //
-  //   });
-  // }
-  //
-
-  // This code runs when the user logs out
-  self.logOut = function(){
-    auth.$signOut().then(function(){
-      console.log('Logging the user out!');
-    });
-  };
 }]);

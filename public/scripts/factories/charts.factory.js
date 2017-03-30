@@ -8,28 +8,18 @@ var amazonProperty = {};
 var newSecret = {};
 var results =[];
 var amazonData=[];
-var factoryGet = {list:[]};
-// self.myDBStuff=
+var factoryGet ={list:[]};
 
 
 
 
 
-// getAmazon();
+
+
 function getAmazon(){
-  console.log("AMAZON FUNCTION STARTED");
-  // This code runs whenever the user changes authentication states
-  // e.g. whevenever the user logs in or logs out
-  // this is where we put most of our logic so that we don't duplicate
-  // the same things in the login and the logout code
-
-
-
-
+  console.log("  factory AMAZON FUNCTION STARTED");
   auth.$onAuthStateChanged(function(firebaseUser){
-    // firebaseUser will be null if not logged in
     if(firebaseUser) {
-      // This is where we make our call to our server
       firebaseUser.getToken().then(function(idToken){
         $http({
           method: 'GET',
@@ -38,17 +28,21 @@ function getAmazon(){
             id_token: idToken
           }
         }).then(function(response){
-          console.log("amazon response Data ....................",response);
-          factoryGet.amazonData = response;
+          console.log("response factory get amazon ....................",response);
+          factoryGet.list= response.data;
         });
       });
-    } else {
-      console.log('Not logged in or not authorized. amazon side request');
-      self.results = [];
     }
-
+    else {
+      console.log('Not logged in or not authorized. amazon side request');
+    }
   });
 };
+
+
+
+
+
 return{
   factoryGet : factoryGet,
   getAmazon:getAmazon

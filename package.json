@@ -16,12 +16,15 @@
     "angular-route": "^1.5.8",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
+    "chartist": "^0.10.1",
     "cron": "^1.2.1",
     "crontab": "^1.1.3",
     "express": "^4.14.0",
     "firebase-admin": "^4.0.3",
     "fusioncharts": "^3.12.0",
+    "heroku": "^0.2.0",
     "mongoose": "^4.7.0",
-    "piranha": "^1.1.0"
+    "piranha": "^1.1.0",
+    "toolbelt": "^0.1.7"
   }
 }
