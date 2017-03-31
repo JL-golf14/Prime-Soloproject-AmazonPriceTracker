@@ -7,7 +7,7 @@ var PriceHistory = require('../models/historySchema');
 var cron = require('cron');
 var Asin="";
 var currentDate = new Date
-var FusionCharts = require("fusioncharts");
+
 
 router.get('/', function (req,res){
   var client = amazon.createClient({
@@ -17,8 +17,8 @@ router.get('/', function (req,res){
   });
   client.itemSearch({
     ItemPage:5,
-    Keywords:"rare",
-    SearchIndex: 'All',
+    Keywords:"computers",
+    SearchIndex: 'Electronics',
     ResponseGroup: 'Large'
   }).then(function(results){
     res.send(results);
@@ -60,7 +60,7 @@ router.post('/', function (req,res){
 //                      automate price function below ======================================================================================================================================================================================================================================
 
 
-var job = new cron.CronJob('0,30 * * * *', function() {
+var job = new cron.CronJob('0,20,40 * * * *', function() {
 
   Amazon.find({}, function(err, myStuff) {
 

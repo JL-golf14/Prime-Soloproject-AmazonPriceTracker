@@ -1,12 +1,12 @@
-<h1> MY TRACKED ITEMS </h1>
 
-<div class="container">
+
+<div class="container tracked-container">
 
 
 <table class="table">
 <th class="historyHeaders">Title</th>
 <th class="historyHeaders">Price</th>
-<th class="historyHeaders">Asin</th>
+<th class="historyHeaders">Chart </th>
 
 <tbody>
       <tr ng-repeat="stuff in tc.myDBStuff">
@@ -29,7 +29,7 @@
 
             <!-- see price history -->
 
-              <a ng-href="#charts/{{stuff.Asin}}">Click to view the chart! {{stuff.Asin}}</a>
+              <a ng-href="#charts/{{stuff.Asin}}">Chart {{stuff.Asin}}</a>
 
           </button>
 

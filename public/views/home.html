@@ -1,6 +1,8 @@
 
-<div class="text" ng-if="sc.amazonData.length === 0"><h1>Log int to be able to save tracked items.</h1></div>
 
+<div class="animated delay 2s bounceOutLeft" ng-if="sc.amazonData.length === 0">
+<h1>Log in to be able to save tracked items.</h1>
+</div>
 <table>
   <tr>
 
@@ -50,7 +52,8 @@
   <input class="input" ng-model="sc.amazonProperty.amazonSearch" placeholder="what to look for?">
 </th>
     <th class="lookHeader">
-<button class="btn btn-default" ng-click="sc.addSearch()">Look in Amazon</button>
+
+<button sweet-on-confirm="checkConfirm()" id="login-submit" tabindex="4" class="btn btn-default" ng-click="sc.addSearch()">Look in Amazon</button>
     </th>
   </tr>
 </table>
@@ -63,11 +66,11 @@
 
 
 
-<div class="content_container">
+
 
 <table class="table">
 
-<tbody class="square">
+<tbody >
   <tr>
     <!-- <div > -->
 
@@ -90,13 +93,15 @@
       <br>
       <div class="price">
 
-        $
 
-      {{item.Offers["0"].Offer["0"].OfferListing["0"].Price["0"].Amount["0"]/100.00}}
+
+      {{(item.Offers["0"].Offer["0"].OfferListing["0"].Price["0"].Amount["0"]/100) | currency}}
       </div>
 
-    <img ng-src='{{item.ImageSets["0"].ImageSet["1"].MediumImage["0"].URL["0"]}}' alt="">
+    <img ng-src='{{item.ImageSets["0"].ImageSet["0"].MediumImage["0"].URL["0"]}}' alt="">
+      <div class="details"><a href='{{item.ItemLinks["0"].ItemLink["0"].URL["0"]}}'> Aamazon's page</a>
 
+      </div>
 <!--
   <div class="buttonHolder"> -->
 

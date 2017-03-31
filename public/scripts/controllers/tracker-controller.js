@@ -9,7 +9,6 @@ myApp.controller('TrackerController',["$firebaseAuth","$http","$routeParams", fu
   self.amazonChart=[];
   self.myDBStuff=[];
 
-console.log("route params on tracker controller",$routeParams);
 
 // ChartsFactory.getAmazon($routeParams.Asin)
 

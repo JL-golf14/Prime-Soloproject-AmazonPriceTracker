@@ -18,9 +18,7 @@ myApp.controller("SampleCtrl",["$firebaseAuth","$http","$location", function($fi
       console.log("Authentication failed: ", error);
     });
   };
-
-
-getAmazon()
+getAmazon();
 function getAmazon(){
   console.log("AMAZON FUNCTION STARTED");
   auth.$onAuthStateChanged(function(firebaseUser){
@@ -87,6 +85,18 @@ function getAmazon(){
 
 self.saveItem = function(item){
  console.log("AMAZON save CLicked ",item);
+ swal({
+  title: 'added to your tracker list!',
+  timer: 2000
+}).then(
+  function () {},
+  // handling the promise rejection
+  function (dismiss) {
+    if (dismiss === 'timer') {
+      console.log('I was closed by the timer')
+    }
+  }
+)
    var firebaseUser = auth.$getAuth();
    if(firebaseUser) {
      // This is where we make our call to our server

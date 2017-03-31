@@ -9,6 +9,13 @@ border-collapse: separate;
 position: relative;
 align-content: center;
 }
+
+tbody{
+  border: black;
+  border-top: 7px;
+}
+
+}
 .titleAz{
   font-size: 120px !important;
 }
@@ -19,7 +26,10 @@ align-content: center;
 
 }
 .historyHeaders{
-  font-size: 35px;
+  font-size: 55px;
+}
+.tracked-container{
+  padding-top: 120px;
 }
 input{
   font-size: 25px;
@@ -36,6 +46,14 @@ select{
   height: 40px;
   width: 300px;
 
+}
+tbody.square.background{
+display: none;
+
+}
+th{
+  text-align: center;
+text-shadow: 3px 3px 3px #337ab7, 2px 2px 20px #337ab7;
 }
 .inputHeader{
   height: 40px;
@@ -81,15 +99,16 @@ from {color: gold;}
 to {color: silver;}
 }
 body {
-    background-image:url(asdf.jpeg)no-repeat;
+    background-image:url(wdwd.jpg);
     background-attachment: fixed;
-    background-size: 80%;
-
+    background-size: 135%;
     text-align: center;
-    background-position: left;
+    background-position: center;
 }
 a{
+  background: none;
   font-weight: 900;
+  position: relative;;
 
 }
 
@@ -110,7 +129,7 @@ header{
   font-size: 55px;
 }
 title{
-  font-size: 120px!important;
+  font-size: 10px!important;
 }
 .jeremy-custom{
   width:330px;
@@ -124,7 +143,10 @@ title{
     height: 100%;
     height: 550px;
     padding: 6px 8px 3px 8px;
-    background-color: #f5f5f5;
+    background-color: white;
+}
+h2{
+  color: darkblue;
 }
 
 .asin{
@@ -150,20 +172,30 @@ font-size: 20px;
 
 }
 .trackTitle{
-  font-size: 23px !important;
+  font-size: 33px !important;
   font-size-adjust: auto;
+  color: #191970;
+  letter-spacing: -2px;
+  border-bottom: 8px groove rgba(51, 104, 183, 0.86)
+  max-width: inherit;
   font-weight: 700 !important;
+  max-width: 1000px;
 }
-.trackPrice{font-size: 45px !important;
-  font-family: fantasy;
+.trackPrice{
+  font-size: 45px !important;
+  font-family: helvetica;
   font-weight: 900;
-  color:rgb(44, 167, 117);
+  color:rgba(0, 102, 255, 0.6);
 
 }
 .price{
   color:rgb(44, 167, 117);
   font-size: 35px;
   font-weight: 800;
+}
+.details{
+  padding: 10px;
+  font-size: 14px;
 }
 .content_container {
     width: 1100px;
@@ -175,9 +207,9 @@ font-size: 20px;
   display: list-item;
   position: relative;
   margin-bottom: : 4px!important;
-
-
+  padding-bottom: 4px !important;
 }
+
 /*.jeremy-custom {
   display: inline;
 }*/
