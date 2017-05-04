@@ -9,7 +9,9 @@ myApp.controller('ChartController',["$firebaseAuth","$http",'$routeParams', func
   self.dateArray=[];
   self.amazonChart={data:[]};
   self.priceArray=[];
-
+  self.sumPrice=0;
+  self.avgPrice=0;
+  self.price=0;
 
 
   console.log("route params... on chart side",$routeParams);
@@ -34,20 +36,42 @@ myApp.controller('ChartController',["$firebaseAuth","$http",'$routeParams', func
             // return self.amazonChart.data[];
 
 
-            console.log("price array",self.priceArray);
-            console.log("az chart after function",self.amazonChart.data[6].Price);
 
 
-            for (var i = 1; i < self.amazonChart.data.length; i++) {
-              var price = self.amazonChart.data[i].Price;
+            for (var i = 0; i < self.amazonChart.data.length; i++) {
+              self.price = self.amazonChart.data[i].Price;
               self.priceArray.push(self.amazonChart.data[i].Price)
               self.dateArray.push(self.amazonChart.data[i].TimeStamp)
+              self.sumPrice += self.amazonChart.data[i].Price*100;
             }
+            self.avgPrice = (self.sumPrice/100)/ self.amazonChart.data.length;
+            console.log("average price===",self.avgPrice);
 
+
+
+
+
+            new Chartist.Line('.ct-chart', {
+              labels: self.dateArray,
+              series: [
+                self.priceArray
+
+              ]
+            }, {
+              showArea: true,
+              axisY: {
+                onlyInteger: false
+              },
+              plugins: [
+                Chartist.plugins.ctThreshold({
+                  threshold:self.avgPrice
+                })
+              ]
+            });
 
 
             self.labels = self.dateArray;
-            self.series = ['Series A', 'Series B'];
+            self.series = ['Price TimeStamp', 'Series B'];
             self.data = [self.priceArray
             ]
             self.onClick = function (points, evt) {
@@ -81,5 +105,34 @@ myApp.controller('ChartController',["$firebaseAuth","$http",'$routeParams', func
     }); //ends firebaseAuth
   };  //ends function
 
+
+
+
+  getAmazon();
+  function getAmazon(){
+    console.log("AMAZON FUNCTION STARTED");
+    auth.$onAuthStateChanged(function(firebaseUser){
+      // firebaseUser will be null if not logged in
+      if(firebaseUser) {
+        // This is where we make our call to our server
+        firebaseUser.getToken().then(function(idToken){
+          $http({
+            method: 'GET',
+            url: '/amazonData',
+            headers: {
+              id_token: idToken
+            }
+          }).then(function(response){
+            console.log("amazon response Data ....................",response);
+            self.amazonData = response;
+          });
+        });
+      } else {
+        console.log('Not logged in or not authorized. amazon side request');
+        self.results = [];
+      }
+
+    });
+  };
   // }
 }]);

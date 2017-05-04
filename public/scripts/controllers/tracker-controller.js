@@ -28,17 +28,18 @@ myApp.controller('TrackerController',["$firebaseAuth","$http","$routeParams", fu
             }).then(function(response){
               console.log("RESPONSE FROM GET",response);
               self.myDBStuff = response.data;
+
             });
           });
         } else {
           console.log('Not logged in or not authorized.');
-          self.myDBStuff =[];
+
         }
 
       });
     };
 
-
+getAmazonChart();
 function getAmazonChart(){
     auth.$onAuthStateChanged(function(firebaseUser){
       // firebaseUser will be null if not logged in
@@ -54,6 +55,12 @@ function getAmazonChart(){
           }).then(function(response){
             console.log("amazon response Data ....................",response);
             self.amazonChart = response.data;
+
+
+
+
+                          self.amazonChart.data = response.data;
+
           });
         });
       } else {

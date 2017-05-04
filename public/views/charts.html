@@ -3,9 +3,14 @@
   <br>
   <h2> {{cc.amazonChart.data["0"].ItemTitle}}</h2>
 
+  <div class="details"><a href='{{item.ItemLinks["0"].ItemLink["0"].URL["0"]}}'> Aamazon's page</a>
 
+  </div>
 
-<canvas id="line" class="chart chart-line" chart-data="cc.data"
+<canvas id="line" class="chart chart-line easeOutQuart ct-line.ct-threshold-below ct-point.ct-threshold-below ct-bar.ct-threshold-below " chart-data="cc.data"
 chart-labels="cc.labels" chart-series="cc.series" chart-options="cc.options"
 chart-dataset-override="cc.datasetOverride" chart-click="self.onClick">
 </canvas>
+
+
+<div class="ct-chart ct-perfect-fourth"></div>

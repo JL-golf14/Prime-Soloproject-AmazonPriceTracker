@@ -13,6 +13,9 @@
 <script src="https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js"></script>
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 <script src="/vendors/Chart.min.js" charset="utf-8"></script>
+<link rel="stylesheet"href="vendors/chartist.min.css">
+<script src="vendors/chartist.min.js" charset="utf-8"></script>
+<script src="vendors/chartist-plugin-threshold.js" charset="utf-8"></script>
 <script src="/vendors/angular-chart.min.js" charset="utf-8"></script>
 <script src="vendors/sweetalert2.min.js" charset="utf-8"></script>
 <link rel="stylesheet" href="vendors/sweetalert2.css">
@@ -32,10 +35,14 @@
 </head>
 
 <div class="container">
+  <div class="logger">
 
+
+  <button class="btn btn-outline-default" ng-click="sc.logIn()">Log In</button>
+  <button class="btn btn-outline-default"  ng-click="sc.logOut()">Log Out</button>
+  </div>
  <body ng-controller="SampleCtrl as sc">
-<div class="jumbotron"><h1 class="titleAz">Amazon Tracker</h1><button class="btn btn-outline-default" ng-click="sc.logIn()">Log In</button>
-<button class="btn btn-outline-default"  ng-click="sc.logOut()">Log Out</button></div>
+<div class="jumbotron"><h1 class="titleAz">Amazon Tracker</h1></div>
 
 <br>
 <header ng-include="'/views/nav.html'"></header>

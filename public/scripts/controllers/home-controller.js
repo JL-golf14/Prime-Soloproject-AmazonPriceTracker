@@ -110,7 +110,7 @@ self.saveItem = function(item){
          data:item
        }).then(function(response){
          console.log("amazon response Data ....................",response);
-         //self.amazonData = response;
+         self.amazonData = response;
        });
      });
    } else {

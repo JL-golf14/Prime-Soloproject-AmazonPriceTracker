@@ -6,11 +6,11 @@ var User = require('../models/user');
 var FusionCharts = require("fusioncharts");
 var PriceHistory = require('../models/historySchema');
 var pricehistories = require('../models/historySchema');
+
 router.post("/", function(req, res) {
   var userEmail = req.decodedToken.email;
   console.log('line 42 req.body', req.body);
   var currentDate = new Date();
-
   var thing = {
     Asin: req.body.ASIN[0],
     ItemTitle:req.body.ItemAttributes["0"].Title["0"],
@@ -20,7 +20,6 @@ router.post("/", function(req, res) {
   }
 
   var databaseObject = new Amazon(thing);
-
 
   User.findOne({
     email: userEmail
@@ -42,29 +41,12 @@ router.post("/", function(req, res) {
           } else {
             // return all of the results where a specific user has permission
             res.sendStatus(201);
-
           }
-
         })
       }
     }
   })
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 router.get("/getdb", function(req, res) {
   var userEmail = req.decodedToken.email;
@@ -82,9 +64,7 @@ router.get("/getdb", function(req, res) {
         console.log('No user found with that email. Have you added this person to the database? Email: ', req.decodedToken.email);
         res.sendStatus(403);
       } else {
-        // Based on the clearance level of the individual, give them access to different information
         Amazon.find({
-
         }, function(err, myStuff) {
           if (err) {
             console.log('Error COMPLETING secrecyLevel query task', err);
@@ -105,14 +85,14 @@ router.get("/getdb", function(req, res) {
 router.get("/getCharts/:Asin", function(req, res) {
   var userEmail = req.decodedToken.email;
   var paramAsin=req.params.Asin;
-  console.log(paramAsin.Asin,"this is the asin on back side");
+  console.log(paramAsin.Asin,"this is the asin");
   // var paramerTitle = req.query.factoryGet.ItemTitle;
   // Check the user's level of permision based on their email
   User.findOne({
     email: userEmail
   }, function(err, user) {
     if (err) {
-      console.log('Error COMPLETING clearanceLevel query task', err);
+      console.log('Error COMPLETING query task', err);
       res.sendStatus(500);
     } else {
       console.log(user);
@@ -121,13 +101,10 @@ router.get("/getCharts/:Asin", function(req, res) {
         console.log('No user found with that email. Have you added this person to the database? Email: ', req.decodedToken.email);
         res.sendStatus(403);
       } else {
-
         pricehistories.find({Asin:paramAsin
-
-
         }, function(err, myStuff) {
           if (err) {
-            console.log('Error COMPLETING secrecyLevel query task', err);
+            console.log('Error COMPLETING query task', err);
             res.sendStatus(500);
           } else {
             // return all of the results where a specific user has permission
