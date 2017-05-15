@@ -10,6 +10,7 @@ var currentDate = new Date
 
 
 router.get('/', function (req,res){
+  console.log("get git for az");
   var client = amazon.createClient({
     awsTag: "jeremy",
     awsId:'AKIAIOZRXUNCRRIY5DDQ',
