@@ -11,11 +11,10 @@
 
 .jumbotron {
   background: none;
-}
-
-.jumbotron h1 {
-  font-size: 113px;
-  font-family: myFirstFont;
+  h1 {
+    font-size: 113px;
+    font-family: myFirstFont;
+  }
 }
 
 @font-face {
@@ -23,10 +22,12 @@
   src: url("budmo jigglish.ttf");
 }
 
+
 @font-face {
   font-family: fonter;
   src: url("FasterOne-Regular.ttf");
 }
+
 
 .historyHeaders {
   font-size: 55px;
@@ -90,9 +91,9 @@ h1 {
   text-align: center;
   color: gold;
   -webkit-animation-name: example;
-  -webkit-animation-duration: 3s infinite;
+  -webkit-animation-duration: 2.5s infinite;
   animation-name: example;
-  animation-duration: 1s;
+  animation-duration: 5s;
   animation-iteration-count: infinite;
   animation-direction: alternate, reverse, normal;
 }
@@ -101,10 +102,12 @@ h1 {
   from {
     color: gold;
   }
+
   to {
     color: silver;
   }
 }
+
 
 body {
   background-image: url(wdwd.jpg);
@@ -129,10 +132,12 @@ a {
   from {
     color: orange;
   }
+
   to {
     color: black;
   }
 }
+
 
 .btn-outline-default {
   background-color: white;
@@ -232,6 +237,28 @@ h2 {
   position: relative;
   margin-bottom: 4px !important;
   padding-bottom: 4px !important;
+}
+
+.ct-chart-line .ct-label.ct-horizontal.ct-end {
+  font-size: 25px;
+  color: black;
+}
+
+.ct-label.ct-vertical.ct-start {
+  font: 23px;
+  color: black;
+}
+
+.ct-series-a .ct-line {
+  /* Colour of your bars */
+  stroke: #197df1;
+  font: 33px;
+  /* The width of your bars */
+  stroke-width: 60px;
+  /* Yes! Dashed bars! */
+  /*stroke-dasharray: 20px;*/
+  /* Maybe you like round corners on your bars? */
+  /*stroke-linecap: round;*/
 }
 
 /*Chart.defaults.global{

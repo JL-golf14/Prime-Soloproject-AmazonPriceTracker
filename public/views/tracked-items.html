@@ -4,16 +4,18 @@
 
 
 <table class="table">
+  <tr>
 <th class="historyHeaders">Title</th>
 <th class="historyHeaders">Price</th>
 <th class="historyHeaders">Chart </th>
-
+</tr>
 <tbody>
-      <tr ng-repeat="stuff in tc.myDBStuff">
+      <tr class="trackedRow" ng-repeat="stuff in tc.myDBStuff">
         <td class="trackTitle">
            {{stuff.ItemTitle}}
         </td>
-        <td class="trackPrice ct-line.ct-threshold-above, ct-point.ct-threshold-above, ct-bar.ct-threshold-above">
+        <td class="trackPrice">
+          <br>
           {{stuff.Price}}
         </td>
         <!-- <td class="trackAsin">
@@ -25,7 +27,7 @@
 
         <td>
 
-          <button ng-click="tc.getAmazonChart(stuff)" class='btn btn-default animated wobble' type="button" name="button">
+          <button ng-click="tc.getAmazonChart(stuff)" class='chart-btns animated wobble' type="button" name="button">
 
             <!-- see price history -->
 

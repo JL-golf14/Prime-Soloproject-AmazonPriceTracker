@@ -9,14 +9,12 @@
   align-content: center;
 }
 
-.titleAz {}
-
 .jumbotron {
+  background: none;
   h1 {
     font-size: 113px;
     font-family: myFirstFont;
   }
-  background: none;
 }
 
 @font-face {
@@ -30,8 +28,6 @@
   src: url("FasterOne-Regular.ttf");
 }
 
-
-.searchGroup {}
 
 .historyHeaders {
   font-size: 55px;
@@ -134,7 +130,7 @@ a {
 /* Standard syntax */
 @keyframes example {
   from {
-    color: rgb(255, 165, 0);
+    color: orange;
   }
 
   to {
@@ -219,7 +215,7 @@ h2 {
 }
 
 .price {
-  color: rgb(44, 167, 117);
+  color: #2ca775;
   font-size: 35px;
   font-weight: 800;
 }
@@ -243,6 +239,28 @@ h2 {
   padding-bottom: 4px !important;
 }
 
+.ct-chart-line .ct-label.ct-horizontal.ct-end {
+  font-size: 25px;
+  color: black;
+}
+
+.ct-label.ct-vertical.ct-start {
+  font: 23px;
+  color: black;
+}
+
+.ct-series-a .ct-line {
+  /* Colour of your bars */
+  stroke: #197df1;
+  font: 33px;
+  /* The width of your bars */
+  stroke-width: 60px;
+  /* Yes! Dashed bars! */
+  /*stroke-dasharray: 20px;*/
+  /* Maybe you like round corners on your bars? */
+  /*stroke-linecap: round;*/
+}
+
 /*Chart.defaults.global{
 font-size: 24px;
 }*/
@@ -263,3 +281,5 @@ stroke:#59922b;
 .ct-area.ct-threshold-below {
   fill: #59922b !important;
 }*/
+
+/*# sourceMappingURL=styles.css.map */

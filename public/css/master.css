@@ -13,6 +13,18 @@ align-content: center;
 .titleAz{
 
 }
+.searchAZ{
+  box-shadow: rgb(255, 246, 175) -1px -1px 3px 0px inset;
+  background: linear-gradient(rgb(255, 236, 100) 5%, rgb(255, 171, 35) 100%) rgb(255, 236, 100); border-radius: 8px; border: 1px solid rgb(255, 170, 34);
+  display: inline-block; cursor: pointer;
+  color: rgb(43, 38, 43);
+  font-family: Arial;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 6px 14px;
+  text-decoration: none;
+  text-shadow: rgb(255, 238, 102) 3px 2px 1px;
+}
 .jumbotron h1{
   font-size: 113px;
   font-family: myFirstFont;
@@ -76,6 +88,11 @@ text-shadow: 3px 3px 3px #337ab7, 2px 2px 20px #337ab7;
 .lookHeader{
 height: 40px;
 width: auto;
+
+}
+.trackedRow{
+  background-color: rgba(144, 176, 180, 0.42);
+  /*border: 12px groove rgba(51, 104, 183, 0.66);*/
 
 }
 .addButton{
@@ -176,23 +193,68 @@ h2{
   font-size: 20px;
   font-weight: 700;
   border-radius: 9px;
-
 }
 .trackTitle{
   font-size: 33px !important;
   font-size-adjust: auto;
-  color: #191970;
+  color:rgba(0, 49, 158, 0.89);
+  text-shadow:3px 3px 5px white;
   letter-spacing: -2px;
-  border-bottom: 12px groove rgba(51, 104, 183, 0.66);
   max-width: inherit;
   font-weight: 700 !important;
   max-width: 1000px;
 }
 .trackPrice{
+  margin-top: 70px;
+  text-align: center;
   font-size: 45px !important;
   font-family: helvetica;
   font-weight: 900;
-  color: rgba(0, 102, 255, 0.6);
+  color: rgba(0, 48, 255, 0.83);
+  text-shadow:3px 1px 3px yellow;
+
+}
+.chart-btns{
+  -moz-box-shadow:inset 0px 0px 15px 3px #23395e;
+  	-webkit-box-shadow:inset 0px 0px 15px 3px #23395e;
+  	box-shadow:inset 0px 0px 15px 3px #23395e;
+  	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2e466e), color-stop(1, #415989));
+  	background:-moz-linear-gradient(top, #2e466e 5%, #415989 100%);
+  	background:-webkit-linear-gradient(top, #2e466e 5%, #415989 100%);
+  	background:-o-linear-gradient(top, #2e466e 5%, #415989 100%);
+  	background:-ms-linear-gradient(top, #2e466e 5%, #415989 100%);
+  	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+  	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989',GradientType=0);
+  	background-color:#2e466e;
+  	-moz-border-radius:7px;
+  	-webkit-border-radius:7px;
+  	border-radius:7px;
+  	border:1px solid #1f2f47;
+  	display:inline-block;
+  	cursor:pointer;
+      height:20rem;
+  	color:#ffffff !important;
+  	font-family:Arial;
+  	font-size:15px;
+  	padding:6px 13px;
+  	text-decoration:none;
+  	text-shadow:0px 1px 0px #263666;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
+	background-color:#476e9e;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
 }
 .price{
   color:rgb(44, 167, 117);
@@ -216,23 +278,3 @@ h2{
   margin-bottom:  4px!important;
   padding-bottom: 4px !important;
 }
-/*Chart.defaults.global{
-font-size: 24px;
-}*/
-/*.ct-line.ct-threshold-above, .ct-point.ct-threshold-above, .ct-bar.ct-threshold-above {
-  background-color: rgb(131, 244, 66, 0.3);
-  stroke:#f05b4f !important;
-}
-
-.ct-line.ct-threshold-below, .ct-point.ct-threshold-below, .ct-bar.ct-threshold-below {
-background-color: #59922b !important;
-stroke:#59922b;
-}
-
-.ct-area.ct-threshold-above {
-  fill: #f05b4f !important;
-}
-
-.ct-area.ct-threshold-below {
-  fill: #59922b !important;
-}*/
