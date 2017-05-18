@@ -13,8 +13,8 @@ router.get('/', function (req,res){
   console.log("get git for az");
   var client = amazon.createClient({
     awsTag: "jeremy",
-    awsId:'AKIAIOZRXUNCRRIY5DDQ',
-    awsSecret: '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'
+    awsId:'AKIAJW6AN456MUWZ6PQA',
+    awsSecret: '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'
   });
   client.itemSearch({
     ItemPage:5,
@@ -32,11 +32,12 @@ router.get('/', function (req,res){
 router.post('/', function (req,res){
   var searchObject = req.body;
   var index = req.params.index;
+  console.log(req.params.index);
   // console.log("made it to post router");
   var client = amazon.createClient({
     awsTag: "jeremy",
-    awsId:'AKIAIOZRXUNCRRIY5DDQ',
-    awsSecret: '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'
+    awsId:'AKIAJW6AN456MUWZ6PQA',
+    awsSecret: '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'
   });
   client.itemSearch({
     ItemPage:5,
@@ -54,7 +55,7 @@ router.post('/', function (req,res){
 });
 
 
-//                      automate price function below ====================================================================================================================================================================================================================
+//                      automate price function below ====================================================================================================================================================================================================
 
 var job = new cron.CronJob('0,20,40 * * * *', function() {
   Amazon.find({}, function(err, myStuff) {
@@ -64,8 +65,8 @@ var job = new cron.CronJob('0,20,40 * * * *', function() {
     }else{
         var client = amazon.createClient({
           awsTag: "jeremy",
-          awsId:'AKIAIOZRXUNCRRIY5DDQ',
-          awsSecret: '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'
+          awsId:'AKIAJW6AN456MUWZ6PQA',
+          awsSecret: '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'
         });
       myStuff.forEach(function(myThing){
         client.itemSearch({

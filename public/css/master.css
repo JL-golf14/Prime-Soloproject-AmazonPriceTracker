@@ -1,168 +1,277 @@
-.table{
-display: table;
-border-collapse: separate;
-border-spacing: 7px;
-border-color: black;
-font:arial,helvetica,clean,sans-serif;
-font-size: 15px !important;
-position: relative;
-align-content: center;
+.promos {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.promo {
+    width: 250px;
+    height: 400px;
+    border: groove white 8px;
+    background: #0F1012;
+    color: #f9f9f9;
+    float: left;
+}
+
+.deal {
+    padding: 10px 0 0 0;
+}
+
+.deal span {
+    display: inline-block;
+    text-align: center;
+}
+
+.deal span:first-of-type {
+    font-size: 23px;
+}
+
+.deal span:last-of-type {
+    font-size: 13px;
+}
+
+.promo .price {
+    display: inline-block;
+    width: 232px;
+    background: #292b2e;
+    margin: 15px 0 10px 0;
+    text-align: center;
+    font-size: 23px;
+    padding: 17px 0 17px 0;
+}
+
+ul {
+    display: inline-block;
+    margin: 20px 0 10px 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    color: #999999;
+}
+
+li {
+    display: inline-block;
+    margin: 10px 0 0 0;
+}
+
+button {
+  align-self: center;
+    border: none;
+    border-radius: 40px;
+    background: #292b2e;
+    color: #f9f9f9;
+    padding: 10px 37px;
+    margin: 10px 0 20px 60px;
+}
+
+.scale {
+    transform: scale(1.2);
+    box-shadow: 0 0 4px 1px rgba(20, 20, 20, 0.8);
+}
+
+.scale button {
+    background: #64AAA4;
+}
+
+.scale .price {
+    color: #64AAA4;
 }
 
 
-.titleAz{
+/*********************************************************************************************/
 
+.table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 7px;
+    border-color: black;
+    font: arial, helvetica, clean, sans-serif;
+    font-size: 15px !important;
+    position: relative;
+    align-content: center;
 }
-.searchAZ{
-  box-shadow: rgb(255, 246, 175) -1px -1px 3px 0px inset;
-  background: linear-gradient(rgb(255, 236, 100) 5%, rgb(255, 171, 35) 100%) rgb(255, 236, 100); border-radius: 8px; border: 1px solid rgb(255, 170, 34);
-  display: inline-block; cursor: pointer;
-  color: rgb(43, 38, 43);
-  font-family: Arial;
-  font-size: 17px;
-  font-weight: bold;
-  padding: 6px 14px;
-  text-decoration: none;
-  text-shadow: rgb(255, 238, 102) 3px 2px 1px;
+
+.titleAz {}
+
+.searchAZ {
+    box-shadow: rgb(255, 246, 175) -1px -1px 3px 0px inset;
+    background: linear-gradient(rgb(255, 236, 100) 5%, rgb(255, 171, 35) 100%) rgb(255, 236, 100);
+    border-radius: 8px;
+    border: 1px solid rgb(255, 170, 34);
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(43, 38, 43);
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 6px 14px;
+    text-decoration: none;
+    text-shadow: rgb(255, 238, 102) 3px 2px 1px;
 }
-.jumbotron h1{
-  font-size: 113px;
-  font-family: myFirstFont;
+
+.jumbotron h1 {
+    font-size: 113px;
+    font-family: myFirstFont;
 }
-.jumbotron{
-  background: none;
+
+.jumbotron {
+    background: none;
 }
 
 @font-face {
     font-family: myFirstFont;
     src: url("budmo jigglish.ttf");
-
 }
+
 
 /*a.@font-face{
   font-family: fonter;
       src: url("FasterOne-Regular.ttf")
 }*/
 
-.searchGroup{
+.searchGroup {}
 
-}
-.historyHeaders{
-  font-size: 55px;
-}
-.tracked-container{
-  padding-top: 120px;
-}
-input{
-  font-size: 25px;
-  text-align: center;
+.historyHeaders {
+    font-size: 55px;
 }
 
-select{
-  text-align: center;
-  width:300px;
-  height: 40px;
-  font-size: 25px;
-}
-.dropdownbox{
-  height: 40px;
-  width: 300px;
-
-}
-tbody.square.background{
-display: none;
+.tracked-container {
+    padding-top: 120px;
 }
 
-th{
-  text-align: center;
-text-shadow: 3px 3px 3px #337ab7, 2px 2px 20px #337ab7;
+input {
+    font-size: 25px;
+    text-align: center;
 }
-.inputHeader{
-  height: 40px;
-  width: 500px;
-}
-.input{
-  height: 40px;
-  width: 500px;
-}
-.lookHeader{
-height: 40px;
-width: auto;
 
+select {
+    text-align: center;
+    width: 300px;
+    height: 40px;
+    font-size: 25px;
 }
-.trackedRow{
-  background-color: rgba(144, 176, 180, 0.42);
-  /*border: 12px groove rgba(51, 104, 183, 0.66);*/
 
+.dropdownbox {
+    height: 40px;
+    width: 300px;
 }
-.addButton{
-  border-radius: 5px;
-  padding: 2px 4px;
-  font-size: 115%;
-  font-weight: 900;
-  display: inline-block;
-  font-size:14px;
-  border: 1px solid blue;
-  color: blue;
-  background-color: #f5f5f5 !important;
-  background: 0;
-  white-space: nowrap;
+
+tbody.square.background {
+    display: none;
 }
-h1{
-text-align: center;
-color: gold;
--webkit-animation-name: example;
--webkit-animation-duration: 3s infinite;
-animation-name: example;
-animation-duration: 1s ;
-animation-iteration-count:infinite;
-animation-direction: alternate, reverse, normal;
+
+th {
+    text-align: center;
+    text-shadow: 3px 3px 3px #337ab7, 2px 2px 20px #337ab7;
+}
+
+.inputHeader {
+    height: 40px;
+    width: 500px;
+}
+
+.input {
+    height: 40px;
+    width: 500px;
+}
+
+.lookHeader {
+    height: 40px;
+    width: auto;
+}
+
+.trackedRow {
+    background-color: rgba(144, 176, 180, 0.42);
+    /*border: 12px groove rgba(51, 104, 183, 0.66);*/
+}
+
+.addButton {
+    border-radius: 5px;
+    padding: 2px 4px;
+    font-size: 115%;
+    font-weight: 900;
+    display: inline-block;
+    font-size: 14px;
+    border: 1px solid blue;
+    color: blue;
+    background-color: #f5f5f5 !important;
+    background: 0;
+    white-space: nowrap;
+}
+
+h1 {
+    text-align: center;
+    color: gold;
+    -webkit-animation-name: example;
+    -webkit-animation-duration: 3s infinite;
+    animation-name: example;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate, reverse, normal;
 }
 
 @-webkit-keyframes example {
-from {color: gold;}
-to {color: silver;}
+    from {
+        color: gold;
+    }
+    to {
+        color: silver;
+    }
 }
+
 body {
-    background-image:url(wdwd.jpg);
+    background-image: url(wdwd.jpg);
     background-attachment: fixed;
     background-size: 135%;
     text-align: center;
     background-position: center;
 }
-a{
-  background: none;
-  font-weight: 900;
-  position: relative;
-}
-.logger{
-  float: left;
+
+a {
+    background: none;
+    font-weight: 900;
+    position: relative;
 }
 
+.logger {
+    float: left;
+}
+
+
 /* Standard syntax */
+
 @keyframes example {
-from {color: rgb(255,165,0);}
-to {color: black;}
+    from {
+        color: rgb(255, 165, 0);
+    }
+    to {
+        color: black;
+    }
 }
-.btn-outline-default{
-  background-color: white;
-  color: blue;
-  font-weight: 700;
-  font-size: 25px;
-  border-color: blue !important;
-  border: 2px;
+
+.btn-outline-default {
+    background-color: white;
+    color: blue;
+    font-weight: 700;
+    font-size: 25px;
+    border-color: blue !important;
+    border: 2px;
 }
-header{
-  font-size: 55px;
+
+header {
+    font-size: 55px;
 }
-title{
-  font-size: 10px!important;
+
+title {
+    font-size: 10px!important;
 }
-.jeremy-custom{
-  width:330px;
-  height: 600px;
-  display: inline-block;
+
+.jeremy-custom {
+    width: 330px;
+    height: 600px;
+    display: inline-block;
 }
+
 .deal_top_inner {
     display: inline-block;
     border: 3px solid #ddd;
@@ -172,98 +281,105 @@ title{
     padding: 6px 8px 3px 8px;
     background-color: white;
 }
-h2{
-  color: darkblue;
+
+h2 {
+    color: darkblue;
 }
 
-.asin{
-  text-decoration: underline;
-  color: red;
+.asin {
+    text-decoration: underline;
+    color: red;
 }
-.title{
-  font-style: bold;
-  display: inline-flex;
-  font-size: 20px;
-  overflow-y: hidden;
-  }
 
-.btn-default{
-  background-color: MidnightBlue;
-  color: white !important;
-  font-size: 20px;
-  font-weight: 700;
-  border-radius: 9px;
+.title {
+    font-style: bold;
+    display: inline-flex;
+    font-size: 20px;
+    overflow-y: hidden;
 }
-.trackTitle{
-  font-size: 33px !important;
-  font-size-adjust: auto;
-  color:rgba(0, 49, 158, 0.89);
-  text-shadow:3px 3px 5px white;
-  letter-spacing: -2px;
-  max-width: inherit;
-  font-weight: 700 !important;
-  max-width: 1000px;
-}
-.trackPrice{
-  margin-top: 70px;
-  text-align: center;
-  font-size: 45px !important;
-  font-family: helvetica;
-  font-weight: 900;
-  color: rgba(0, 48, 255, 0.83);
-  text-shadow:3px 1px 3px yellow;
 
+.btn-default {
+    background-color: MidnightBlue;
+    color: white !important;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 9px;
 }
-.chart-btns{
-  -moz-box-shadow:inset 0px 0px 15px 3px #23395e;
-  	-webkit-box-shadow:inset 0px 0px 15px 3px #23395e;
-  	box-shadow:inset 0px 0px 15px 3px #23395e;
-  	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2e466e), color-stop(1, #415989));
-  	background:-moz-linear-gradient(top, #2e466e 5%, #415989 100%);
-  	background:-webkit-linear-gradient(top, #2e466e 5%, #415989 100%);
-  	background:-o-linear-gradient(top, #2e466e 5%, #415989 100%);
-  	background:-ms-linear-gradient(top, #2e466e 5%, #415989 100%);
-  	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
-  	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989',GradientType=0);
-  	background-color:#2e466e;
-  	-moz-border-radius:7px;
-  	-webkit-border-radius:7px;
-  	border-radius:7px;
-  	border:1px solid #1f2f47;
-  	display:inline-block;
-  	cursor:pointer;
-      height:20rem;
-  	color:#ffffff !important;
-  	font-family:Arial;
-  	font-size:15px;
-  	padding:6px 13px;
-  	text-decoration:none;
-  	text-shadow:0px 1px 0px #263666;
+
+.trackTitle {
+    font-size: 33px !important;
+    font-size-adjust: auto;
+    color: rgba(0, 49, 158, 0.89);
+    text-shadow: 3px 3px 5px white;
+    letter-spacing: -2px;
+    max-width: inherit;
+    font-weight: 700 !important;
+    max-width: 1000px;
 }
+
+.trackPrice {
+    margin-top: 70px;
+    text-align: center;
+    font-size: 45px !important;
+    font-family: helvetica;
+    font-weight: 900;
+    color: rgba(0, 48, 255, 0.83);
+    text-shadow: 3px 1px 3px yellow;
+}
+
+.chart-btns {
+    -moz-box-shadow: inset 0px 0px 15px 3px #23395e;
+    -webkit-box-shadow: inset 0px 0px 15px 3px #23395e;
+    box-shadow: inset 0px 0px 15px 3px #23395e;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2e466e), color-stop(1, #415989));
+    background: -moz-linear-gradient(top, #2e466e 5%, #415989 100%);
+    background: -webkit-linear-gradient(top, #2e466e 5%, #415989 100%);
+    background: -o-linear-gradient(top, #2e466e 5%, #415989 100%);
+    background: -ms-linear-gradient(top, #2e466e 5%, #415989 100%);
+    background: linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989', GradientType=0);
+    background-color: #2e466e;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    border: 1px solid #1f2f47;
+    display: inline-block;
+    cursor: pointer;
+    height: 20rem;
+    color: #ffffff !important;
+    font-family: Arial;
+    font-size: 15px;
+    padding: 6px 13px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #263666;
+}
+
 .myButton:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
-	background:-moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:-webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:-o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:-ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
-	background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2',GradientType=0);
-	background-color:#476e9e;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
+    background: -moz-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+    background: -webkit-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+    background: -o-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+    background: -ms-linear-gradient(top, #476e9e 5%, #7892c2 100%);
+    background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#476e9e', endColorstr='#7892c2', GradientType=0);
+    background-color: #476e9e;
 }
 
+.myButton:active {
+    position: relative;
+    top: 1px;
 }
-.price{
-  color:rgb(44, 167, 117);
-  font-size: 35px;
-  font-weight: 800;
+
+
 }
-.details{
-  padding: 10px;
-  font-size: 18px;
+.price {
+    color: rgb(44, 167, 117);
+    font-size: 35px;
+    font-weight: 800;
+}
+.details {
+    padding: 10px;
+    font-size: 18px;
 }
 .content_container {
     width: 1100px;
@@ -271,10 +387,9 @@ h2{
     text-align: left;
     background-color: white;
 }
-
-.buttonHolder{
-  display: list-item;
-  position: relative;
-  margin-bottom:  4px!important;
-  padding-bottom: 4px !important;
+.buttonHolder {
+    display: list-item;
+    position: relative;
+    margin-bottom: 4px!important;
+    padding-bottom: 4px !important;
 }

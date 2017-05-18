@@ -1,7 +1,6 @@
 var myApp = angular.module('myApp', ['ngRoute','firebase','chart.js']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
-
     $routeProvider
         .when('/home', {
             templateUrl: '/views/home.html',

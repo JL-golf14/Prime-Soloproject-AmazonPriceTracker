@@ -1,4 +1,4 @@
-
+<!--
 
 <div class="container tracked-container">
 
@@ -18,10 +18,10 @@
           <br>
           {{stuff.Price}}
         </td>
-        <!-- <td class="trackAsin">
+        < <td class="trackAsin">
 
           {{stuff.Asin}}
-        </td> -->
+        </td>
 
 
 
@@ -29,7 +29,7 @@
 
           <button ng-click="tc.getAmazonChart(stuff)" class='chart-btns animated wobble' type="button" name="button">
 
-            <!-- see price history -->
+            < see price history
 
               <a ng-href="#charts/{{stuff.Asin}}">Chart {{stuff.Asin}}</a>
 
@@ -40,4 +40,32 @@
       </tr>
     </tbody>
 </table>
+</div> -->
+<table class="table">
+  <tr>
+<th class="historyHeaders">Title</th>
+<th class="historyHeaders">Price</th>
+<th class="historyHeaders">Chart </th>
+</tr>
+
+<div class="promos" ng-repeat="stuff in tc.myDBStuff">
+<div class="promo">
+  <div class="deal">
+    <span >{{stuff.Asin}}</span>
+    <span>This is really a good deal!</span>
+  </div>
+  <span class="price">{{stuff.Price}}</span>
+  <ul class="features">
+    <li> {{stuff.ItemTitle}}</li>
+    <!-- <li>Another super feature</li>
+    <li>And more...</li> -->
+  </ul>
+    <button ng-click="tc.getAmazonChart(stuff)" class=' animated wobble' type="button" name="button">   
+
+          <a ng-href="#charts/{{stuff.Asin}}">Chart {{stuff.Asin}}</a>
+
+      </button>
+</div>
+
+
 </div>
