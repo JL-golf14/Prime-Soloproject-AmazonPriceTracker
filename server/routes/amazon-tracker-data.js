@@ -14,7 +14,7 @@ router.get('/', function (req,res){
   var client = amazon.createClient({
     awsTag: "jeremy",
     awsId:'AKIAJW6AN456MUWZ6PQA',
-    awsSecret: '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'
+    awsSecret: ''
   });
   client.itemSearch({
     ItemPage:5,
@@ -37,7 +37,7 @@ router.post('/', function (req,res){
   var client = amazon.createClient({
     awsTag: "jeremy",
     awsId:'AKIAJW6AN456MUWZ6PQA',
-    awsSecret: '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'
+    awsSecret: ''
   });
   client.itemSearch({
     ItemPage:5,
@@ -66,7 +66,7 @@ var job = new cron.CronJob('0,20,40 * * * *', function() {
         var client = amazon.createClient({
           awsTag: "jeremy",
           awsId:'AKIAJW6AN456MUWZ6PQA',
-          awsSecret: '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'
+          awsSecret: ''
         });
       myStuff.forEach(function(myThing){
         client.itemSearch({

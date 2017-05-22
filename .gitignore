@@ -2,6 +2,6 @@
 node_modules
 *.log
 .firebaserc
-server/routes/amazon-tracker-data
+    ....kserver/routes/amazon-tracker-data
 server/firebase-service-account.json
 .env
