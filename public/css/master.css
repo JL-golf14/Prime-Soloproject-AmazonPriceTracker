@@ -1,12 +1,12 @@
 .promos {
-    width: 800px;
+    width: 1250px;
     margin: 0 auto;
     margin-top: 50px;
 }
 
 .promo {
     width: 250px;
-    height: 400px;
+    height: 450px;
     border: groove white 8px;
     background: #0F1012;
     color: #f9f9f9;
@@ -55,13 +55,16 @@ li {
 }
 
 button {
-  align-self: center;
+  bottom:inherit;
+  position: relative;
+vertical-align:baseline;
     border: none;
+    font-size: 20px;
     border-radius: 40px;
     background: #292b2e;
     color: #f9f9f9;
-    padding: 10px 37px;
-    margin: 10px 0 20px 60px;
+    /*padding: 10px 37px 0 37px;*/
+    margin: 20px 0 5px 10px;
 }
 
 .scale {
@@ -372,9 +375,9 @@ h2 {
 
 
 }
-.price {
+.pricess {
     color: rgb(44, 167, 117);
-    font-size: 35px;
+    font-size: 35px !important;
     font-weight: 800;
 }
 .details {

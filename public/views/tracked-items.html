@@ -41,12 +41,12 @@
     </tbody>
 </table>
 </div> -->
-<table class="table">
+<!-- <table class="table">
   <tr>
 <th class="historyHeaders">Title</th>
 <th class="historyHeaders">Price</th>
 <th class="historyHeaders">Chart </th>
-</tr>
+</tr> -->
 
 <div class="promos" ng-repeat="stuff in tc.myDBStuff">
 <div class="promo">
@@ -60,11 +60,17 @@
     <!-- <li>Another super feature</li>
     <li>And more...</li> -->
   </ul>
-    <button ng-click="tc.getAmazonChart(stuff)" class=' animated wobble' type="button" name="button">   
+  <ul>
+  
+    <br>
+    <li>
+    <button ng-click="tc.getAmazonChart(stuff)" class=' animated wobble' type="button" name="button">
 
           <a ng-href="#charts/{{stuff.Asin}}">Chart {{stuff.Asin}}</a>
 
       </button>
+      </li>
+      </ul>
 </div>
 
 
