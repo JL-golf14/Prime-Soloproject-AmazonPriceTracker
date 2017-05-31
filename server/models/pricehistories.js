@@ -8,7 +8,7 @@ var pricehistoriesSchema = new Schema({
   // ProductId:{ type: String},
   Price: { type: String},
   _id:{ type: String},
-  // ProductGroup:{ type: String,},
+  ProductGroup:{ type: String,},
   TimeStamp: { type: String}
 
 });

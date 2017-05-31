@@ -9,7 +9,7 @@ var pricehistories = require('../models/historySchema');
 
 router.post("/", function(req, res) {
   var userEmail = req.decodedToken.email;
-  console.log('line 42 req.body', req.body);
+  console.log('line 42 req.body', req.body.OfferSummary["0"].LowestNewPrice["0"].FormattedPrice["0"]);
   var currentDate = new Date();
   var thing = {
     Asin: req.body.ASIN[0],

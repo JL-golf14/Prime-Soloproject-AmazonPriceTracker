@@ -5,7 +5,6 @@ var amazon = require('amazon-product-api');
 var Amazon = require('../models/amazonSchema');
 var PriceHistory = require('../models/historySchema');
 var cron = require('cron');
-var Asin="";
 var currentDate = new Date
 
 
@@ -13,8 +12,8 @@ router.get('/', function (req,res){
   console.log("get git for az");
   var client = amazon.createClient({
     awsTag: "jeremy",
-    awsId:'AKIAJW6AN456MUWZ6PQA',
-    awsSecret: ''
+    awsId:'AKIAJ7DEUVQRE35FROXA',
+    awsSecret: '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'
   });
   client.itemSearch({
     ItemPage:5,
@@ -32,12 +31,12 @@ router.get('/', function (req,res){
 router.post('/', function (req,res){
   var searchObject = req.body;
   var index = req.params.index;
-  console.log(req.params.index);
+  // console.log(req.params.index,"HERE>>>>>>>>>>>>>>>>>>>>>>>>>");
   // console.log("made it to post router");
   var client = amazon.createClient({
     awsTag: "jeremy",
-    awsId:'AKIAJW6AN456MUWZ6PQA',
-    awsSecret: ''
+    awsId:'AKIAJ7DEUVQRE35FROXA',
+    awsSecret: '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'
   });
   client.itemSearch({
     ItemPage:5,
@@ -45,8 +44,18 @@ router.post('/', function (req,res){
     SearchIndex: searchObject.ProductGroup,
     ResponseGroup:'Large'
   }).then(function(results){
-    results.SearchIndex = searchObject.ProductGroup;
-      console.log("AZ ADD RESULTS",results);
+    // console.log("searchObject MMMMMMMMMMMM",searchObject);
+  //   console.log(results.length);
+  // var productGroup = searchObject.ProductGroup;
+  //    for (var i = 0; i < results.length-1; i++) {
+  //     //  console.log(results[i],"QQQQQQQQQQQ");
+    //  results.ItemAttributes[1].push(productGroup);
+  //  }
+    // console.log(searchObject,".......................");
+    // results.SearchIndex = searchObject.ProductGroup;
+      // console.log("AZ ADD RESULTS",results);
+      console.log(results[0].ItemAttributes[0].Binding,"HERE>>>>>>>>>>>>>>>>>>>>>>>>>");
+
     res.send(results);
   }).catch(function(err){
     console.log('error retreiving results', err[0].Error);
@@ -65,8 +74,8 @@ var job = new cron.CronJob('0,20,40 * * * *', function() {
     }else{
         var client = amazon.createClient({
           awsTag: "jeremy",
-          awsId:'AKIAJW6AN456MUWZ6PQA',
-          awsSecret: ''
+          awsId:'AKIAJ7DEUVQRE35FROXA',
+          awsSecret: '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'
         });
       myStuff.forEach(function(myThing){
         client.itemSearch({
@@ -74,7 +83,7 @@ var job = new cron.CronJob('0,20,40 * * * *', function() {
           // ItemPage:5,
           IdType:myThing.Asin,
           Title:myThing.ItemTitle,
-          SearchIndex:"Electronics",
+          SearchIndex:myThing.ProductGroup,
           ResponseGroup:'Large'
         }).then(
           function(results){
@@ -85,12 +94,12 @@ var job = new cron.CronJob('0,20,40 * * * *', function() {
               Asin:results[0].ASIN[0],
               ItemTitle:results[0].ItemAttributes[0].Title[0],
               Price:(results[0].Offers[0].Offer[0].OfferListing[0].Price[0].Amount[0] / 100.00),
-              // ProductGroup:results.data["0"].ItemAttributes["0"].ProductGroup["0"],
+              ProductGroup:results.data["0"].ItemAttributes["0"].ProductGroup["0"],
               TimeStamp: currentDate
             };
             var priceHistory = new PriceHistory(thing);
             priceHistory.save(function(thing) {
-              console.log("Saved items to the DB at",currentDate);
+              console.log("Saved items to the DB at",thing);
               // insert goes here back to my database
             })
           }) // end .then

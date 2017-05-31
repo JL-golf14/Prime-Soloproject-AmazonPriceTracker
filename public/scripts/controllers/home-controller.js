@@ -18,6 +18,7 @@ myApp.controller("SampleCtrl",["$firebaseAuth","$http","$location", function($fi
       console.log("Authentication failed: ", error);
     });
   };
+  
 getAmazon();
 function getAmazon(){
   console.log("AMAZON FUNCTION STARTED");
@@ -45,14 +46,6 @@ function getAmazon(){
   });
 };
 
-
-
-
-
-
-
-
-
  self.addSearch = function(){
   console.log("AMAZON ADD CLicked ");
     var firebaseUser = auth.$getAuth();
@@ -66,7 +59,7 @@ function getAmazon(){
           },
           data:self.amazonProperty
         }).then(function(response){
-          console.log("post to amazon from hmctrl....................",response);
+          console.log("post to amazon from hmctrl....................",response.config.data.ProductGroup);
           self.amazonData = response;
         });
       });
@@ -75,13 +68,6 @@ function getAmazon(){
       self.results = [];
     }
 };
-
-
-
-
-
-
-
 
 self.saveItem = function(item){
  console.log("AMAZON save CLicked ",item);
@@ -120,9 +106,7 @@ self.saveItem = function(item){
 
 };
 
-
-
-// =====================================================================================================
+// ==========================================================================================
 
 
   // This code runs when the user logs out

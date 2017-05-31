@@ -14,7 +14,6 @@ myApp.controller('ChartController',["$firebaseAuth","$http",'$routeParams', func
   self.price=0;
 
 
-  console.log("route params... on chart side",$routeParams);
 
   getAmazonChart();
   function getAmazonChart(){

@@ -7,7 +7,7 @@ var historySchema = new Schema({
   ItemTitle: { type: String},
   // ProductId:{ type: String},
   Price: { type: String,  required: true },
-  // ProductGroup:{ type: String,  required: true },
+ ProductGroup:{ type: String},
   TimeStamp: { type: String,  required: true }
 
 });
