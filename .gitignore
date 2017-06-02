@@ -2,7 +2,7 @@
 node_modules
 *.log
 .firebaserc
- server/routes/amazon-tracker-data
- server/routes/amazon-tracker-data.js
+ /server/routes/amazon-tracker-data
+ /server/routes/amazon-tracker-data.js
 server/firebase-service-account.json
 .env
