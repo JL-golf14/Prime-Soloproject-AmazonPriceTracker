@@ -12,8 +12,6 @@ router.get('/', function (req,res){
   console.log("get git for az");
   var client = amazon.createClient({
     awsTag: "jeremy",
-    awsId:'4444444444444444444444',
-    awsSecret: '2222222'
   });
   client.itemSearch({
     ItemPage:5,
