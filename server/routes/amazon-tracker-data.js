@@ -30,6 +30,7 @@ router.get('/', function (req,res){
 
 router.post('/', function (req,res){
   var searchObject = req.body;
+  console.log(req.body,4444444444444444444444);
   var index = req.params.index;
   // console.log(req.params.index,"HERE>>>>>>>>>>>>>>>>>>>>>>>>>");
   // console.log("made it to post router");
@@ -54,7 +55,7 @@ router.post('/', function (req,res){
     // console.log(searchObject,".......................");
     // results.SearchIndex = searchObject.ProductGroup;
       // console.log("AZ ADD RESULTS",results);
-      console.log(results[0].ItemAttributes[0].Binding,"HERE>>>>>>>>>>>>>>>>>>>>>>>>>");
+      console.log(results[0],"HERE>>>>>>>>>>>>>>>>>>>>>>>>>");
 
     res.send(results);
   }).catch(function(err){
@@ -94,9 +95,10 @@ var job = new cron.CronJob('0,20,40 * * * *', function() {
               Asin:results[0].ASIN[0],
               ItemTitle:results[0].ItemAttributes[0].Title[0],
               Price:(results[0].Offers[0].Offer[0].OfferListing[0].Price[0].Amount[0] / 100.00),
-              ProductGroup:results.data["0"].ItemAttributes["0"].ProductGroup["0"],
+              ProductGroup:results.config.data["0"].ItemAttributes["0"].ProductGroup["0"],
               TimeStamp: currentDate
             };
+            console.log(thing);
             var priceHistory = new PriceHistory(thing);
             priceHistory.save(function(thing) {
               console.log("Saved items to the DB at",thing);

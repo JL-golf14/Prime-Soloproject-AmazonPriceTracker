@@ -59,6 +59,7 @@ function getAmazon(){
           },
           data:self.amazonProperty
         }).then(function(response){
+          console.log(response,"this is it");
           console.log("post to amazon from hmctrl....................",response.config.data.ProductGroup);
           self.amazonData = response;
         });
