@@ -5,16 +5,13 @@ var amazon = require('amazon-product-api');
 var Amazon = require('../models/amazonSchema');
 var PriceHistory = require('../models/historySchema');
 var cron = require('cron');
-var currentDate = new Date
+var currentDate = new Date;
+var key = require("./api-key.json");
 
 
 router.get('/', function (req,res){
   console.log("get git for az");
-  var client = amazon.createClient({
-        awsTag: "jeremy",
-        awsId:'AKIAJDPGBBSOMRDMEEWQ',
-        awsSecret: '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'
-  });
+  var client = amazon.createClient(key);
   client.itemSearch({
     ItemPage:5,
     Keywords:"computers",
@@ -34,11 +31,7 @@ router.post('/', function (req,res){
   var index = req.params.index;
   // console.log(req.params.index,"HERE>>>>>>>>>>>>>>>>>>>>>>>>>");
   // console.log("made it to post router");
-  var client = amazon.createClient({
-        awsTag: "jeremy",
-        awsId:'AKIAJDPGBBSOMRDMEEWQ',
-        awsSecret: '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'
-  });
+  var client = amazon.createClient(key);
   client.itemSearch({
     ItemPage:5,
     Keywords: searchObject.amazonSearch,
@@ -73,11 +66,7 @@ var job = new cron.CronJob('0,20,40 * * * *', function() {
       console.log('Err', err);
       res.sendStatus(500);
     }else{
-        var client = amazon.createClient({
-          awsTag: "jeremy",
-      awsId:'AKIAJDPGBBSOMRDMEEWQ',
-      awsSecret: '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'
-        });
+        var client = amazon.createClient(key);
       myStuff.forEach(function(myThing){
         client.itemSearch({
           // Operation:'ItemSearch',
