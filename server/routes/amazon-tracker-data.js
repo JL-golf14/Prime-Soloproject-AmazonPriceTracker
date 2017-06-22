@@ -84,7 +84,7 @@ var job = new cron.CronJob('0,20,40 * * * *', function() {
               Asin:results[0].ASIN[0],
               ItemTitle:results[0].ItemAttributes[0].Title[0],
               Price:(results[0].Offers[0].Offer[0].OfferListing[0].Price[0].Amount[0] / 100.00),
-              ProductGroup:results.config.data["0"].ItemAttributes["0"].ProductGroup["0"],
+              ProductGroup:results.data["0"].ItemAttributes["0"].ProductGroup["0"],
               TimeStamp: currentDate
             };
             console.log(thing);
@@ -95,7 +95,7 @@ var job = new cron.CronJob('0,20,40 * * * *', function() {
             })
           }) // end .then
           .catch(function(err){
-            console.log('error retreiving results', err);
+            console.log('error retreiving results', err, Error[0].code[0],Error[0].Message[0]);
            console.log('error with the function');
           });
       }); // end of forEach

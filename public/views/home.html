@@ -49,11 +49,11 @@
       </th>
     </tr>
   </table>
-  {{response}}
+  <!-- {{response}} -->
 
   <table class="table">
     <tbody >
-      <tr>
+      <tr class="full">
         <td class="deal_top_inner jeremy-custom" ng-repeat="item in sc.amazonData.data">
           <div class="title">
             {{item.ItemAttributes["0"].Title["0"]}}
@@ -64,11 +64,13 @@
             {{(item.Offers["0"].Offer["0"].OfferListing["0"].Price["0"].Amount["0"]/100) | currency}}
           </div>
           <img ng-src='{{item.ImageSets["0"].ImageSet["0"].MediumImage["0"].URL["0"]}}' alt="">
+
           <div class="details"><a href='{{item.ItemLinks["0"].ItemLink["0"].URL["0"]}}'> Amazon's page</a>
           </div>
           <button class="btn active addButton animated jello" type="button" ng-click="sc.saveItem(item)">add to watchlist</button>
+
         </td>
-      </tr>
+      </tr class="full">
     </tbody>
   </table>
 

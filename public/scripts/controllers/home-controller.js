@@ -6,7 +6,27 @@ myApp.controller("SampleCtrl",["$firebaseAuth","$http","$location", function($fi
   self.newSecret = {};
   self.results =[];
   self.amazonData =[];
+  self.newUserEmail ='';
 
+  //add new user to DB from login view button click
+self.newUser = function(newUserEmail){
+    firebase.auth().currentUser.getToken().then(function(idToken) {
+      $http({
+        method: 'POST',
+        url: '/amazonData',
+        data: newUserEmail,
+        headers: {
+          id_token: idToken
+        }
+      }).then(function(response){
+        notyf.confirm('You are now a registered user!')
+        self.newUserEmail = '';
+      }).catch(function(error) {
+        swal("Sorry, we couldn't process your address.", "Try Again!", "error");
+        console.log('error authenticating', error);
+      });
+    });//end of firebase.auth()
+  }//end of NewUser()
 
 
   // This code runs whenever the user logs in

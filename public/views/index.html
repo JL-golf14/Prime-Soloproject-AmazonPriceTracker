@@ -43,6 +43,8 @@
 
   <button class="btn btn-outline-default" ng-click="sc.logIn()">Log In</button>
   <button class="btn btn-outline-default"  ng-click="sc.logOut()">Log Out</button>
+
+
   </div>
  <body ng-controller="SampleCtrl as sc">
 <div class="jumbotron"><h1 class="titleAz">Amazon Tracker</h1></div>
@@ -54,6 +56,13 @@
 <br>
 
 <main ng-view ></main>
+<table>
 
+<tr>
 
+<p>new users enter your email address then click the new user button</p>
+<input type="text" ng-model="newUserEmail" placeholder="enter e-mail here">
+<button class="btn btn-outline-default" ng-click="sc.newUser(newUserEmail)">New User Click Here</button>
+</tr>
+</table>
 </html>
