@@ -5,3 +5,4 @@ node_modules
 server/routes/amazon-tracker-data.js
 server/firebase-service-account.json
 .env
+server/routes/api-key.json

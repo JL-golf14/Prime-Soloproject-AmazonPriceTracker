@@ -18,7 +18,7 @@ myApp.controller("SampleCtrl",["$firebaseAuth","$http","$location", function($fi
       console.log("Authentication failed: ", error);
     });
   };
-  
+
 getAmazon();
 function getAmazon(){
   console.log("AMAZON FUNCTION STARTED");
